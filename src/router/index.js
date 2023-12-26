@@ -1,7 +1,24 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
+import AuthLayout from '@/layouts/AuthLayout.vue'
 
 const routes = [
+  {
+    path: '/',
+    component: AuthLayout,
+    children: [
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import('@/views/Auth/LoginView.vue'),
+      },
+      {
+        path: '/signup',
+        name: 'signup',
+        component: () => import('@/views/Auth/SignUp.vue'),
+      },
+    ],
+  },
   {
     path: '/dashboard',
     name: 'dashboard',
@@ -31,7 +48,9 @@ const routes = [
   },
   {
     path: '/',
-    component: () => import('@/layouts/default/DefaultTem.vue'),
+
+    component: () => import('@/layouts/default/DefaultView.vue'),
+
     children: [
       {
         path: '/class',
