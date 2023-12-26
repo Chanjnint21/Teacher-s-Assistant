@@ -9,7 +9,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer app v-model="drawer"  width="300" class="sidebar">
+    <v-navigation-drawer app v-model="drawer"  width="300" class="sidebar" color="#2C3E50">
       <v-list dense>
         <v-list-item-group>
           <v-list-item v-for="(item, i) in items" :key="i">
