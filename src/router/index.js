@@ -22,21 +22,39 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    // route level code-splitting
-    // this generates a separate chunk (Home-[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import('@/views/App/DashboardView.vue'),
+    component: () => import('@/layouts/DashboardView.vue'),
+    children: [
+      {
+        path: 'attendance',
+        name: 'attendance',
+        component: () => import('@/layouts/components/AttendanceStudents.vue'),
+      },
+      {
+        path: 'score-grading',
+        name: 'score-grading',
+        component: () => import('@/layouts/components/ScoreGrading.vue'),
+      },
+      {
+        path: 'performance-report',
+        name: 'performance-report',
+        component: () => import('@/layouts/components/PerformanceReport.vue'),
+      },
+      {
+        path: 'setting',
+        name: 'setting',
+        component: () => import('@/layouts/components/SettingUser.vue'),
+      },
+    ]
   },
   {
     path: '/',
+
     component: () => import('@/layouts/default/DefaultView.vue'),
+
     children: [
       {
         path: '/class',
         name: 'class',
-        // route level code-splitting
-        // this generates a separate chunk (Home-[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import('@/views/App/ClassView.vue'),
       },
     ],
