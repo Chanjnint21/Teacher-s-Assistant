@@ -35,10 +35,67 @@
         </v-img>
       </v-btn>
 
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+      <div class="text-center">
+        <v-menu v-model="menu" :close-on-content-click="false" location="end">
+          <template v-slot:activator="{ props }">
+            <v-btn color="indigo" v-bind="props" icon>
+              <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+          </template>
+
+          <v-card min-width="300">
+            <v-list>
+              <v-list-item
+                prepend-avatar="https://cdn.vuetifyjs.com/images/john.jpg"
+                title="John Leider"
+                subtitle="Founder of Vuetify"
+              >
+                <template v-slot:append>
+                  <v-btn
+                    variant="text"
+                    :class="fav ? 'text-red' : ''"
+                    icon="mdi-heart"
+                    @click="fav = !fav"
+                  ></v-btn>
+                </template>
+              </v-list-item>
+            </v-list>
+
+            <v-divider></v-divider>
+
+            <v-list>
+              <v-list-item>
+                <v-switch
+                  v-model="message"
+                  color="purple"
+                  label="Enable messages"
+                  hide-details
+                ></v-switch>
+              </v-list-item>
+
+              <v-list-item>
+                <v-switch
+                  v-model="hints"
+                  color="purple"
+                  label="Enable hints"
+                  hide-details
+                ></v-switch>
+              </v-list-item>
+            </v-list>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn variant="text" @click="menu = false"> </v-btn>
+              <v-btn color="primary" variant="text" @click="menu = false">
+                LOGOUT
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-menu>
+      </div>
     </v-app-bar>
+
     <v-main>
       <v-container>
         <v-sheet color="grey-lighten-4">
@@ -67,23 +124,21 @@
           </v-slide-group>
         </v-sheet>
       </v-container>
+
       <v-container>
-        <v-card
-          flat
-          width="250"
-          v-bind="props"
-          class="pa-5 d-flex align-center justify-center bg-purple"
-        >
-          <div class="add text-center">
-            <v-avatar
-              icon="mdi-plus"
-              color="white"
-              variant="tonal"
-              class="mb-2 bg-red"
-            ></v-avatar>
-            <div class="text-caption text-truncate">Create new class</div>
-          </div>
-        </v-card>
+        <v-hover>
+          <template v-slot:default="{ isHovering, props }">
+            <v-card
+              flat
+              width="250"
+              v-bind="props"
+              class="pa-5 d-flex align-center justify-center bg-purple"
+              :color="isHovering ? 'primary' : undefined"
+            >
+              <FormCreateClass />
+            </v-card>
+          </template>
+        </v-hover>
         <v-tabs v-model="tab" color="deep-purple-accent-4" align-tabs="end">
           <v-tab :value="1">Secondary</v-tab>
           <v-tab :value="2">High School</v-tab>
@@ -185,13 +240,33 @@
       </v-container>
     </v-main>
   </v-app>
+  <ClassView />
 </template>
 
 <script>
-// import HelloWorld from '@/components/HelloWorld.vue'
+import ClassView from "./ClassView.vue";
+import FormCreateClass from "./dialog/FormCreateClass.vue";
+
 export default {
+  components: {
+    ClassView,
+    FormCreateClass,
+  },
   data: () => ({
+    //open table
     tab: null,
+
+    //menu profile
+    fav: true,
+    menu: false,
+    message: false,
+    hints: true,
+    //open dialog form
+    dialog: false,
+    notifications: false,
+    sound: true,
+    widgets: false,
+
     cards: [
       {
         id: 1,
