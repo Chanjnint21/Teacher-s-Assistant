@@ -2,9 +2,10 @@
   <v-app id="inspire">
     <v-app-bar extended>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      <v-toolbar-className>Dashboard</v-toolbar-className>
+      <v-toolbar-className>Your Dashboard</v-toolbar-className>
 
       <v-spacer></v-spacer>
+      <p>You logged as <b> Koemnak GK</b></p>
 
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
@@ -67,6 +68,22 @@
         </v-sheet>
       </v-container>
       <v-container>
+        <v-card
+          flat
+          width="250"
+          v-bind="props"
+          class="pa-5 d-flex align-center justify-center bg-purple"
+        >
+          <div class="add text-center">
+            <v-avatar
+              icon="mdi-plus"
+              color="white"
+              variant="tonal"
+              class="mb-2 bg-red"
+            ></v-avatar>
+            <div class="text-caption text-truncate">Create new class</div>
+          </div>
+        </v-card>
         <v-tabs v-model="tab" color="deep-purple-accent-4" align-tabs="end">
           <v-tab :value="1">Secondary</v-tab>
           <v-tab :value="2">High School</v-tab>
