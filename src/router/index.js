@@ -27,7 +27,7 @@ const routes = [
   {
     path: "/class",
     name: "class",
-    component: () => import("@/views/App/Class/ClassViewScr.vue"),
+    component: () => import("@/views/App/Class/SidebarMenu.vue"),
     children: [
       {
         path: "attendance",

@@ -20,7 +20,7 @@
           height="35"
           class="rounded-circle"
           style="
-             {
+            {
               width: 35px;
               height: 35px;
               background-color: #e0e0e0;

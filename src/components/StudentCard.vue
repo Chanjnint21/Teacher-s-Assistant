@@ -1,7 +1,8 @@
 <template>
   <v-card
-    max-width="400"
+    max-width="500"
     class="mx-auto"
+    elevation="4"
   >
     <v-container>
       <v-row dense>
@@ -21,8 +22,9 @@
                 <v-card-actions>
                   <v-btn
                     class="ms-2"
-                    icon="mdi-play"
+                    icon="mdi-pen"
                     variant="text"
+                    @click="editStudentInfo"
                   ></v-btn>
                 </v-card-actions>
               </div>
