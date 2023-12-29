@@ -240,16 +240,13 @@
       </v-container>
     </v-main>
   </v-app>
-  <ClassView />
 </template>
 
 <script>
-import ClassView from "./ClassView.vue";
 import FormCreateClass from "./dialog/FormCreateClass.vue";
 
 export default {
   components: {
-    ClassView,
     FormCreateClass,
   },
   data: () => ({
