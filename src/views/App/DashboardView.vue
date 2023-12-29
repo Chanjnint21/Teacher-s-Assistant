@@ -353,12 +353,5 @@ export default {
       },
     ],
   }),
-  methods:{
-
-    goToClass(){
-      this.$router.push('/class')
-    }
-
-  }
 };
 </script>
