@@ -55,7 +55,8 @@ export default {
     drawer: false,
     currentRoute: null,
     items: [
-      { title: 'class', route: 'class', icon: 'mdi-view-dashboard' },
+      // { title: 'class', route: 'class', icon: 'mdi-view-dashboard' },
+      { title: 'Dashboard', route: 'dashboard', icon: 'mdi-view-dashboard' },
       { title: 'Attendance', route: 'attendance', icon: 'mdi-account-check' },
       { title: 'Score Grading', route: 'score-grading', icon: 'mdi-format-list-numbered' },
       { title: 'Generate Overall Performance Report', route: 'performance-report', icon: 'mdi-chart-bar' },

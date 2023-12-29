@@ -1,1 +1,24 @@
-{"User":[{"email":"heatkimnak@gmail.com","password":"Nak2002kk"}]}
+
+{
+  "User": [],
+  "Students": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "age": 20,
+      "grade": "A"
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "age": 21,
+      "grade": "B"
+    },
+    {
+      "id": 3,
+      "name": "Bob Smith",
+      "age": 22,
+      "grade": "C"
+    }
+  ]
+}
