@@ -22,43 +22,36 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import('@/layouts/DashboardView.vue'),
-    children: [
-      {
-        path: 'attendance',
-        name: 'attendance',
-        component: () => import('@/layouts/components/AttendanceStudents.vue'),
-      },
-      {
-        path: 'score-grading',
-        name: 'score-grading',
-        component: () => import('@/layouts/components/ScoreGrading.vue'),
-      },
-      {
-        path: 'performance-report',
-        name: 'performance-report',
-        component: () => import('@/layouts/components/PerformanceReport.vue'),
-      },
-      {
-        path: 'setting',
-        name: 'setting',
-        component: () => import('@/layouts/components/SettingUser.vue'),
-      },
-    ]
+
+
   },
   {
-    path: '/',
-
-    component: () => import('@/layouts/default/DefaultView.vue'),
-
-    children: [
-      {
         path: '/class',
         name: 'class',
-        component: () => import('@/views/App/ClassView.vue'),
+        component: () => import('@/views/App/Class/ClassViewScr.vue'),
+        children: [
+          {
+            path: 'attendance',
+            name: 'attendance',
+            component: () => import('@/views/App/Class/components/AttendanceStudents.vue'),
+          },
+          {
+            path: 'score-grading',
+            name: 'score-grading',
+            component: () => import('@/views/App/Class/components/ScoreGrading.vue'),
+          },
+          {
+            path: 'performance-report',
+            name: 'performance-report',
+            component: () => import('@/views/App/Class/components/PerformanceReport.vue'),
+          },
+          {
+            path: 'setting',
+            name: 'setting',
+            component: () => import('@/views/App/Class/components/SettingUser.vue'),
+          },
+        ]
       },
-    ],
-  },
 ]
 
 const router = createRouter({
