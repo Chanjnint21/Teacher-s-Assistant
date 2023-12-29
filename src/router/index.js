@@ -1,29 +1,57 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
+import AuthLayout from '@/layouts/AuthLayout.vue'
 
 const routes = [
   {
-    path: '/dashboard',
-    name: 'dashboard',
-    // route level code-splitting
-    // this generates a separate chunk (Home-[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import('@/views/App/DashboardView.vue'),
-  },
-  {
     path: '/',
-    component: () => import('@/layouts/default/Default.vue'),
+    component: AuthLayout,
     children: [
       {
-        path: '/class',
-        name: 'class',
-        // route level code-splitting
-        // this generates a separate chunk (Home-[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import('@/views/App/ClassView.vue'),
+        path: '/login',
+        name: 'login',
+        component: () => import('@/views/Auth/LoginView.vue'),
+      },
+      {
+        path: '/signup',
+        name: 'signup',
+        component: () => import('@/views/Auth/SignUp.vue'),
       },
     ],
   },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+
+
+  },
+  {
+        path: '/class',
+        name: 'class',
+        component: () => import('@/views/App/Class/ClassViewScr.vue'),
+        children: [
+          {
+            path: 'attendance',
+            name: 'attendance',
+            component: () => import('@/views/App/Class/components/AttendanceStudents.vue'),
+          },
+          {
+            path: 'score-grading',
+            name: 'score-grading',
+            component: () => import('@/views/App/Class/components/ScoreGrading.vue'),
+          },
+          {
+            path: 'performance-report',
+            name: 'performance-report',
+            component: () => import('@/views/App/Class/components/PerformanceReport.vue'),
+          },
+          {
+            path: 'setting',
+            name: 'setting',
+            component: () => import('@/views/App/Class/components/SettingUser.vue'),
+          },
+        ]
+      },
 ]
 
 const router = createRouter({
