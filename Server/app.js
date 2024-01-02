@@ -60,6 +60,20 @@ app.post('/user', (req, res) => {
   }
 })
 
+// app.post('/addScore', (req, res) => {
+//   try {
+//     const studentScore = req.body;
+//     db['Students'].push(studentScore)
+//     fs.writeFileSync(__dirname + '/../Server/mockdata/db.json', JSON.stringify(db));
+//   }catch(error) {
+//     console.log('Error to add student score')
+//     res.status(500).json({
+//       'message' : 'Internal Server Error'
+//     })
+//   }
+// })
+
+
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });

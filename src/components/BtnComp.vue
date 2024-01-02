@@ -1,7 +1,7 @@
 <template>
   <v-responsive class="mx-auto" max-width="344">
     <div>
-      <v-btn variant="tonal" :color="color">
+      <v-btn v-bind="$attrs" v-on="listeners" variant="tonal" :color="color">
         <v-icon v-if="prependIcon">{{ prependIcon }}</v-icon>
         {{ label }}
       </v-btn>
@@ -15,10 +15,11 @@ export default {
   props: {
     label: String,
     prependIcon: String,
-    color: String
+    color: String,
+    attrs: Object,
+    listeners: Object,
   }
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
