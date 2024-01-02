@@ -1,6 +1,6 @@
 <template>
   <v-responsive class="mx-auto" max-width="344">
-    <v-text-field variant="outlined"  hide-details="auto" :label="label">
+    <v-text-field variant="outlined" hide-details="auto" :label="label" v-model="internalValue" type="number">
       <template v-slot:prepend-inner>
         <v-icon v-if="prependIcon">{{ prependIcon }}</v-icon>
       </template>
@@ -11,12 +11,25 @@
 <script>
 export default {
   name: 'TextField',
-  data: () => { },
+  data() {
+    return {
+      internalValue: this.value,
+    };
+  },
   props: {
     label: String,
-    prependIcon: String
-  }
-}
+    prependIcon: String,
+    value: String,
+  },
+  watch: {
+    internalValue(newVal) {
+      this.$emit('update:modelValue', newVal);
+    },
+    value(newVal) {
+      this.internalValue = newVal;
+    },
+  },
+};
 </script>
 
 <style scoped></style>
