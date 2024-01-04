@@ -1,11 +1,13 @@
 // Composables
 import { createRouter, createWebHistory } from "vue-router";
+// import VueRouter from 'vue-router'
 import AuthLayout from "@/layouts/AuthLayout.vue";
 
 const routes = [
   {
     path: "/",
     component: AuthLayout,
+    redirect: '/login',
     children: [
       {
         path: "/login",
@@ -34,6 +36,9 @@ const routes = [
         name: "attendance",
         component: () =>
           import("@/views/App/Class/components/AttendanceStudents.vue"),
+          meta: {
+            auth: true
+          }
       },
       {
         path: "score-grading",
@@ -60,5 +65,7 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+
 
 export default router;
