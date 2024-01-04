@@ -33,5 +33,26 @@ export const Service = {
       console.error('Error fetching students:', error);
       throw error;
     }
+  },
+
+  async addStudent(addStudentData) {
+    try {
+      const response = await axios.post('http://localhost:8080/addStudents', addStudentData);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error posting students', error);
+      throw error;
+    }
+  },
+
+  async deleteStudentById(id) {
+    try{
+      const response = await axios.delete(`http://localhost:8080/deleteStudents/${id}`);
+      console.log(response.data)
+    }catch(error) {
+      console.error('Error Deleting student', error)
+      throw error
+    }
   }
+
 }

@@ -3,9 +3,18 @@
     <v-row>
       <v-col cols="4">
         <br />
-        <div>
-          <h2 class="ml-4">Student's List Name</h2>
-        </div>
+        <v-row>
+        <v-col cols="10">
+          <div>
+            <h2 class="ml-4">Student's List Name</h2>
+          </div>
+        </v-col>
+        <v-col cols="2">
+          <div>
+          <dia-comp/>
+          </div>
+        </v-col>
+      </v-row>
         <div class="ml-4 mt-4 v-scroll-y">
           <v-row>
               <v-card height="800" class="mt-4 student-card">
@@ -34,16 +43,16 @@
             <v-form ref="form">
               <v-row>
                 <v-col cols="6" class="mt-8">
-                  <TextField label="Math" prependIcon="mdi-calculator-variant-outline" class="mb-8" v-model="math" />
-                  <TextField label="Physic" prependIcon="mdi-flash" class="mb-8" v-model="physic" />
-                  <TextField label="Chemistry" prependIcon="mdi-atom" class="mb-8" v-model="chemistry" />
-                  <TextField label="Biology" prependIcon="mdi-dna" class="mb-8" v-model="biology" />
+                  <TextField label="Math" prependIcon="mdi-calculator-variant-outline" class="mb-8" v-model="math" type="number"/>
+                  <TextField label="Physic" prependIcon="mdi-flash" class="mb-8" v-model="physic" type="number"/>
+                  <TextField label="Chemistry" prependIcon="mdi-atom" class="mb-8" v-model="chemistry" type="number"/>
+                  <TextField label="Biology" prependIcon="mdi-dna" class="mb-8" v-model="biology" type="number"/>
                 </v-col>
                 <v-col cols="6" class="mt-8">
-                  <TextField label="Khmer" prependIcon="mdi-note-outline" class="mb-8" v-model="khmer" />
-                  <TextField label="English" prependIcon="mdi-alphabetical-variant" class="mb-8" v-model="english" />
-                  <TextField label="Sport" prependIcon="mdi-soccer" class="mb-8" v-model="Sport" />
-                  <TextField label="Computer" prependIcon="mdi-desktop-classic" class="mb-8" v-model="computer" />
+                  <TextField label="Khmer" prependIcon="mdi-note-outline" class="mb-8" v-model="khmer" type="number"/>
+                  <TextField label="English" prependIcon="mdi-alphabetical-variant" class="mb-8" v-model="english" type="number"/>
+                  <TextField label="Sport" prependIcon="mdi-soccer" class="mb-8" v-model="Sport" type="number"/>
+                  <TextField label="Computer" prependIcon="mdi-desktop-classic" class="mb-8" v-model="computer" type="number"/>
                 </v-col>
               </v-row>
               <v-row justify="center">
@@ -51,7 +60,7 @@
                   <BtnComp label="Cancel" prependIcon="mdi-cancel" color="#BF3131" @click="clearInput" />
                 </v-col>
                 <v-col cols="2">
-                  <BtnComp label="Edit" prependIcon="mdi-pen" color="#EAD196" />
+                  <BtnComp label="Save Draft" prependIcon="mdi-pen" color="#EAD196" />
                 </v-col>
                 <v-col cols="2">
                   <BtnComp label="Submit" prependIcon="mdi-check" color="#219C90" @click="saveInput" />
@@ -69,12 +78,15 @@
 import StudentCard from '@/components/StudentCard';
 import TextField from '@/components/TextField.vue';
 import BtnComp from '@/components/BtnComp.vue';
+import DiaComp from '@/components/DiaComp';
+
 
 export default {
   components: {
     StudentCard,
     TextField,
     BtnComp,
+    DiaComp,
   },
   data: () => ({
     math: '',
