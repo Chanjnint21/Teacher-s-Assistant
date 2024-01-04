@@ -8,11 +8,9 @@
         </div>
         <div class="ml-4 mt-4 v-scroll-y">
           <v-row>
-            <v-col v-for="n in 5" :key="n" cols="12">
-              <v-card height="250" class="mt-4 student-card">
+              <v-card height="800" class="mt-4 student-card">
                 <StudentCard />
               </v-card>
-            </v-col>
           </v-row>
         </div>
       </v-col>
@@ -88,6 +86,8 @@ export default {
     sport: '',
     computer: '',
   }),
+
+
   methods: {
     async saveInput() {
       const { valid } = await this.$refs.form.validate();
@@ -131,7 +131,7 @@ export default {
 
 .v-scroll-y {
   overflow-y: auto;
-  max-height: 800px;
+  max-height: 4000px;
 }
 
 .student-card {

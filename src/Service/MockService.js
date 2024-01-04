@@ -22,5 +22,16 @@ export const Service = {
     } catch (e) {
       console.log(e)
     }
+  },
+  async getStudents() {
+    try {
+      const response = await axios.get('http://localhost:8080/getStudents');
+      console.log(response)
+      console.log(response.data)
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching students:', error);
+      throw error;
+    }
   }
 }
