@@ -4,22 +4,22 @@
       <v-col cols="4">
         <br />
         <v-row>
-        <v-col cols="10">
-          <div>
-            <h2 class="ml-4">Student's List Name</h2>
-          </div>
-        </v-col>
-        <v-col cols="2">
-          <div>
-          <dia-comp/>
-          </div>
-        </v-col>
-      </v-row>
+          <v-col cols="10">
+            <div>
+              <h2 class="ml-4">Student's List Name</h2>
+            </div>
+          </v-col>
+          <v-col cols="2">
+            <div>
+              <dia-comp />
+            </div>
+          </v-col>
+        </v-row>
         <div class="ml-4 mt-4 v-scroll-y">
           <v-row>
-              <v-card height="800" class="mt-4 student-card">
-                <StudentCard />
-              </v-card>
+            <v-card height="800" class="mt-4 student-card">
+              <StudentCard :students="students" @edit-student-info="handleEditStudentInfo" />
+            </v-card>
           </v-row>
         </div>
       </v-col>
@@ -37,22 +37,25 @@
                 </v-avatar>
               </v-col>
               <v-col cols="6" class="mt-8">
-                <h3>Chansovanmony Yoeun </h3>
+                <h3> {{ hii}}</h3>
               </v-col>
             </v-row>
             <v-form ref="form">
               <v-row>
                 <v-col cols="6" class="mt-8">
-                  <TextField label="Math" prependIcon="mdi-calculator-variant-outline" class="mb-8" v-model="math" type="number"/>
-                  <TextField label="Physic" prependIcon="mdi-flash" class="mb-8" v-model="physic" type="number"/>
-                  <TextField label="Chemistry" prependIcon="mdi-atom" class="mb-8" v-model="chemistry" type="number"/>
-                  <TextField label="Biology" prependIcon="mdi-dna" class="mb-8" v-model="biology" type="number"/>
+                  <TextField label="Math" prependIcon="mdi-calculator-variant-outline" class="mb-8" v-model="math"
+                    type="number" />
+                  <TextField label="Physic" prependIcon="mdi-flash" class="mb-8" v-model="physic" type="number" />
+                  <TextField label="Chemistry" prependIcon="mdi-atom" class="mb-8" v-model="chemistry" type="number" />
+                  <TextField label="Biology" prependIcon="mdi-dna" class="mb-8" v-model="biology" type="number" />
                 </v-col>
                 <v-col cols="6" class="mt-8">
-                  <TextField label="Khmer" prependIcon="mdi-note-outline" class="mb-8" v-model="khmer" type="number"/>
-                  <TextField label="English" prependIcon="mdi-alphabetical-variant" class="mb-8" v-model="english" type="number"/>
-                  <TextField label="Sport" prependIcon="mdi-soccer" class="mb-8" v-model="Sport" type="number"/>
-                  <TextField label="Computer" prependIcon="mdi-desktop-classic" class="mb-8" v-model="computer" type="number"/>
+                  <TextField label="Khmer" prependIcon="mdi-note-outline" class="mb-8" v-model="khmer" type="number" />
+                  <TextField label="English" prependIcon="mdi-alphabetical-variant" class="mb-8" v-model="english"
+                    type="number" />
+                  <TextField label="Sport" prependIcon="mdi-soccer" class="mb-8" v-model="sport" type="number" />
+                  <TextField label="Computer" prependIcon="mdi-desktop-classic" class="mb-8" v-model="computer"
+                    type="number" />
                 </v-col>
               </v-row>
               <v-row justify="center">
@@ -79,6 +82,7 @@ import StudentCard from '@/components/StudentCard';
 import TextField from '@/components/TextField.vue';
 import BtnComp from '@/components/BtnComp.vue';
 import DiaComp from '@/components/DiaComp';
+import { Service } from '@/Service/MockService';
 
 
 export default {
@@ -89,6 +93,7 @@ export default {
     DiaComp,
   },
   data: () => ({
+    studentId: null,
     math: '',
     physic: '',
     chemistry: '',
@@ -97,33 +102,57 @@ export default {
     english: '',
     sport: '',
     computer: '',
+    students: [],
   }),
-
-
   methods: {
     async saveInput() {
       const { valid } = await this.$refs.form.validate();
       if (valid) {
         const savedDataInput = {
-          math: this.math,
-          physic: this.physic,
-          chemistry: this.chemistry,
-          biology: this.biology,
-          khmer: this.khmer,
-          english: this.english,
-          sport: this.sport,
-          computer: this.computer,
+          studentId: this.studentId,
+          scores: {
+            math: this.math,
+            physic: this.physic,
+            chemistry: this.chemistry,
+            biology: this.biology,
+            khmer: this.khmer,
+            english: this.english,
+            sport: this.sport,
+            computer: this.computer,
+          }
         };
         console.log(savedDataInput);
+        console.log('trigger student id ', this.studentId)
+        try {
+          await Service.addStudentScore(this.studentId, savedDataInput)
+          this.$refs.form.reset();
+        } catch (error) {
+          console.error('Error to add score', error)
+        }
       } else {
         alert('Please fill in all required fields.');
       }
     },
+    handleEditStudentInfo(studentId) {
+      console.log('Received student ID:', studentId);
+      this.studentId = studentId;
+      console.log('Updated studentId:', this.studentId);
+    },
+
+
     clearInput() {
       this.$refs.form.reset()
     }
-
   },
+  watch:  {
+    studentId(newStudentId){
+      this.currentFullName = this.getFullNameById(newStudentId)
+    }
+  },
+  created() {
+    console.log('Students data:', this.students);
+  }
+
 };
 </script>
 

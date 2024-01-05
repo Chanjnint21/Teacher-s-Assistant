@@ -11,7 +11,7 @@
                 </v-card-title>
                 <v-card-subtitle> <span>class:</span> {{ student.studentClass }}</v-card-subtitle>
                 <v-card-actions>
-                  <v-btn class="ms-2" icon @click="editStudentInfo(student.id)">
+                  <v-btn class="ms-2" icon @click="editStudentInfo(student)">
                     <v-icon>mdi-pencil</v-icon>
                   </v-btn>
                   <span>Add Score </span>
@@ -23,7 +23,7 @@
             </div>
             <v-row justify="end">
               <v-col cols="2">
-                <edit-user-dia class="m-4" />
+                <edit-user-dia class="m-4" :students="students" />
               </v-col>
               <v-col cols="2" class="m-2">
                 <v-dialog v-model="dialog" width="400">
@@ -86,14 +86,14 @@ export default {
       }
     },
     editStudentInfo(student) {
+      this.$emit('edit-student-info', student.id);
       console.log('Editing student:', student);
-      console.log(student.id)
     },
     showDeleteDialog(student) {
       this.dialog = true;
-      console.log('student',student)
+      console.log('student', student)
       this.selectedStudent = student
-      console.log('selectedStudent',this.selectedStudent)
+      console.log('selectedStudent', this.selectedStudent)
 
     },
     async confirmDelete() {
