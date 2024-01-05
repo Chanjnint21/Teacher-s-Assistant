@@ -61,30 +61,27 @@ export default {
   components: {
     TextField
   },
+  props: {
+    students: Array
+  },
   methods: {
-    // async saveStudent() {
-    //   const { valid } = await this.$refs.form.validate();
-    //   if (valid) {
-    //     const addStudentData = {
-    //       fullName: this.fullName,
-    //       age: this.age,
-    //       email: this.email,
-    //       gender: this.gender,
-    //       studentClass: this.studentClass
-    //     }
-    //     try {
-    //       console.log('hiii')
-    //       await Service.addStudent(addStudentData);
-    //       console.log('Student added successfully');
-    //     } catch (error) {
-    //       console.error('Error adding student:', error);
-    //     }
-    //     this.dialog = false;
-    //     console.log('saveStudent',addStudentData);
-    //   } else {
-    //     console.log('There is something error');
-    //   }
-    // }
+    async saveStudent() {
+      const { valid } = await this.$refs.form.validate();
+      console.log('students',this.students)
+      if (valid) {
+        const addStudentData = {
+          fullName: this.fullName,
+          age: this.age,
+          email: this.email,
+          gender: this.gender,
+          studentClass: this.studentClass
+        }
+        this.dialog = false;
+        console.log('saveStudent',addStudentData);
+      } else {
+        console.log('There is something error');
+      }
+    }
   }
 };
 </script>

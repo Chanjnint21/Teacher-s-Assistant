@@ -53,6 +53,17 @@ export const Service = {
       console.error('Error Deleting student', error)
       throw error
     }
+  },
+
+  async addStudentScore(studentId, scoreData) {
+    try {
+      const response = await axios.post(`http://localhost:8080/addScore/${studentId}`, scoreData);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error in adding student score', error);
+      throw error;
+    }
   }
+
 
 }

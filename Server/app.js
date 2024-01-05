@@ -138,6 +138,42 @@ app.delete('/deleteStudents/:id', (req, res) => {
   }
 });
 
+app.post('/addScore/:studentId', (req, res) => {
+  try {
+    const studentId = parseInt(req.params.studentId);
+    const newStudentScore = req.body;
+
+    // Find the student in the Students database by ID
+    const studentIndex = db['Students'].findIndex((student) => student.id === studentId);
+
+    if (studentIndex !== -1) {
+      // Check if the student already has a score in the studentScore database
+      const scoreIndex = db['studentScore'].findIndex((score) => score.studentId === studentId);
+
+      if (scoreIndex !== -1) {
+        // If the student already has a score, update it
+        db['studentScore'][scoreIndex].scores = { ...db['studentScore'][scoreIndex].scores, ...newStudentScore.scores };
+      } else {
+        // If the student doesn't have a score, create one
+        const newScore = {
+          studentId: studentId,
+          scores: newStudentScore.scores,
+        };
+        db['studentScore'].push(newScore);
+      }
+
+      fs.writeFileSync(__dirname + '/../Server/mockdata/db.json', JSON.stringify(db));
+      res.json(newStudentScore);
+    } else {
+      res.status(404).json({ message: 'Student not found' });
+    }
+  } catch (error) {
+    console.error('Error adding student score:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
