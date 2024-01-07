@@ -25,6 +25,7 @@ export const Service = {
       console.log(e);
     }
   },
+<<<<<<< HEAD
   async CreateClass(Class) {
     try {
       await axios
@@ -50,3 +51,49 @@ export const Service = {
     }
   },
 };
+=======
+  async getStudents() {
+    try {
+      const response = await axios.get('http://localhost:8080/getStudents');
+      console.log(response)
+      console.log(response.data)
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching students:', error);
+      throw error;
+    }
+  },
+
+  async addStudent(addStudentData) {
+    try {
+      const response = await axios.post('http://localhost:8080/addStudents', addStudentData);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error posting students', error);
+      throw error;
+    }
+  },
+
+  async deleteStudentById(id) {
+    try{
+      const response = await axios.delete(`http://localhost:8080/deleteStudents/${id}`);
+      console.log(response.data)
+    }catch(error) {
+      console.error('Error Deleting student', error)
+      throw error
+    }
+  },
+
+  async addStudentScore(studentId, scoreData) {
+    try {
+      const response = await axios.post(`http://localhost:8080/addScore/${studentId}`, scoreData);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error in adding student score', error);
+      throw error;
+    }
+  }
+
+
+}
+>>>>>>> f34f1c174529dce92e06a375406ecbeee7d1ef4c
