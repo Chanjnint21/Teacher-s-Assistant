@@ -1,4 +1,100 @@
 <template>
+  <v-row justify="center">
+    <v-dialog v-model="dialog" persistent width="1024">
+      <template v-slot:activator="{ props }">
+        <v-btn color="primary" v-bind="props">
+          <v-icon end icon="mdi-dots-vertical"></v-icon>
+        </v-btn>
+      </template>
+      <v-card>
+        <v-card-title>
+          <span class="text-h5">Edit Class</span>
+        </v-card-title>
+        <v-img
+          cover
+          height="200"
+          src="https://cdn.vuetifyjs.com/images/cards/house.jpg"
+        >
+          <v-row class="pa-3">
+            <v-col cols="12">
+              <v-menu
+                location="bottom start"
+                origin="overlap"
+                transition="slide-y-transition"
+              >
+                <template v-slot:activator="{ props }">
+                  <div
+                    name="file"
+                    v-bind="props"
+                    @click="openUploadModal"
+                    accept="image/png, image/jpeg, image/bmp"
+                    prepend-icon="
+                      mdi-camera
+                    "
+                  >
+                    <v-icon end icon="mdi-camera"></v-icon>
+                  </div>
+                </template>
+              </v-menu>
+            </v-col>
+
+            <v-row>
+              <v-col class="text-center">
+                <h3 class="text-h5">{{ className }}</h3>
+                <span class="text-grey-lighten-1">{{ title }}</span>
+              </v-col>
+            </v-row>
+          </v-row>
+        </v-img>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="6" md="4">
+                <v-text-field label="New Name" required></v-text-field>
+              </v-col>
+              <v-col cols="12" sm="6" md="4">
+                <v-text-field
+                  label="Assignee"
+                  hint="example of helper text only on focus"
+                ></v-text-field>
+              </v-col>
+
+              <v-col cols="12" sm="6">
+                <v-autocomplete
+                  :items="[
+                    'Skiing',
+                    'Ice hockey',
+                    'Soccer',
+                    'Basketball',
+                    'Hockey',
+                    'Reading',
+                    'Writing',
+                    'Coding',
+                    'Basejump',
+                  ]"
+                  label="Interests"
+                  multiple
+                ></v-autocomplete>
+              </v-col>
+            </v-row>
+          </v-container>
+          <small>*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue-darken-1" variant="text" @click="dialog = false">
+            Close
+          </v-btn>
+          <v-btn color="blue-darken-1" variant="text" @click="dialog = false">
+            Save
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-row>
+</template>
+
+<!-- <template>
   <v-row justify="center pa-5">
     <v-dialog
       v-model="dialog"
@@ -9,14 +105,8 @@
       <template v-slot:activator="{ props }">
         <div class="text-center w-100 add-new-class" v-bind="props">
           <div class="d-flex text-center align-center justify-center">
-            <v-avatar
-              icon="mdi-plus"
-              color="white"
-              variant="tonal"
-              class="bg-red"
-            ></v-avatar>
             <div class="text-subheading text-truncate pa-5">
-              Create new class
+              <v-icon end icon="mdi-dots-vertical"></v-icon>
             </div>
           </div>
         </div>
@@ -36,11 +126,7 @@
               indeterminate
             ></v-progress-linear>
           </template>
-          <!-- <v-img v-if="url" :src="url"></v-img> -->
-
-          <!-- <div>
-            <button @click="openUploadModal">Upload files</button>
-          </div> -->
+          
 
           <v-img cover height="200" v-if="img" :src="img">
             <v-row class="pa-3">
@@ -119,12 +205,6 @@
                     @change="ClassName"
                   ></v-text-field>
                 </v-col>
-                <v-col cols="12" sm="6" md="4">
-                  <v-text-field
-                    label="Assignee"
-                    hint="example of helper text only on focus"
-                  ></v-text-field>
-                </v-col>
                 <v-col cols="12">
                   <v-select
                     v-model="gradeSelected"
@@ -175,7 +255,7 @@
       </v-card>
     </v-dialog>
   </v-row>
-</template>
+</template> -->
 <style lang="css" scoped>
 .add-new-class :hover {
   cursor: pointer;
@@ -183,7 +263,6 @@
 </style>
 <script>
 import { Service } from "@/Service/MockService";
-import moment from "moment";
 export default {
   data() {
     const srcs = {
@@ -296,7 +375,6 @@ export default {
         className: this.className,
         src: this.img,
         Grade: this.gradeSelected,
-        time: moment().format("MMMM Do YYYY, h:mm:ss a"),
       };
       if (data) {
         await Service.CreateClass(data).then(
