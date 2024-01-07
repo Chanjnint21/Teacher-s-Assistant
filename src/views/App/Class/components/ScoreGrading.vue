@@ -29,35 +29,41 @@
           <h2 class="mr-4">Grade Scores Information</h2>
         </div>
         <div>
-          <v-card class="mr-8 grade-info" max-width="800" elevation="4" style="height: 780px">
+          <v-card class="mr-8 grade-info" max-width="900" elevation="4" style="height: 780px">
             <v-row align="start">
               <v-col cols="2" class="mt-8">
                 <v-avatar class="ml-8">
-                  <v-img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" max-width="1000"></v-img>
+                  <v-img src="https://placekitten.com/200/300?image=" alt="John" max-width="1000"></v-img>
                 </v-avatar>
               </v-col>
-              <v-col cols="6" class="mt-8">
-                <h3> {{ hii}}</h3>
+              <v-col cols="4" class="mt-8">
+                <h3> {{ studentName ? studentName : 'No Student Was Selected!' }}</h3>
               </v-col>
             </v-row>
             <v-form ref="form">
-              <v-row>
+              <v-row class="mr-2 ml-2">
                 <v-col cols="6" class="mt-8">
                   <TextField label="Math" prependIcon="mdi-calculator-variant-outline" class="mb-8" v-model="math"
-                    type="number" />
-                  <TextField label="Physic" prependIcon="mdi-flash" class="mb-8" v-model="physic" type="number" />
-                  <TextField label="Chemistry" prependIcon="mdi-atom" class="mb-8" v-model="chemistry" type="number" />
-                  <TextField label="Biology" prependIcon="mdi-dna" class="mb-8" v-model="biology" type="number" />
+                    type="number" :rules="numberRules" />
+                  <TextField label="Physic" prependIcon="mdi-flash" class="mb-8" v-model="physic" type="number"
+                    :rules="numberRules" />
+                  <TextField label="Chemistry" prependIcon="mdi-atom" class="mb-8" v-model="chemistry" type="number"
+                    :rules="numberRules" />
+                  <TextField label="Biology" prependIcon="mdi-dna" class="mb-8" v-model="biology" type="number"
+                    :rules="numberRules" />
                 </v-col>
                 <v-col cols="6" class="mt-8">
-                  <TextField label="Khmer" prependIcon="mdi-note-outline" class="mb-8" v-model="khmer" type="number" />
+                  <TextField label="Khmer" prependIcon="mdi-note-outline" class="mb-8" v-model="khmer" type="number"
+                    :rules="numberRules" />
                   <TextField label="English" prependIcon="mdi-alphabetical-variant" class="mb-8" v-model="english"
-                    type="number" />
-                  <TextField label="Sport" prependIcon="mdi-soccer" class="mb-8" v-model="sport" type="number" />
+                    type="number" :rules="numberRules" />
+                  <TextField label="Sport" prependIcon="mdi-soccer" class="mb-8" v-model="sport" type="number"
+                    :rules="numberRules" />
                   <TextField label="Computer" prependIcon="mdi-desktop-classic" class="mb-8" v-model="computer"
-                    type="number" />
+                    type="number" :rules="numberRules" />
                 </v-col>
               </v-row>
+
               <v-row justify="center">
                 <v-col cols="2" class="mb-4">
                   <BtnComp label="Cancel" prependIcon="mdi-cancel" color="#BF3131" @click="clearInput" />
@@ -94,6 +100,8 @@ export default {
   },
   data: () => ({
     studentId: null,
+    studentName: '',
+    valid: false,
     math: '',
     physic: '',
     chemistry: '',
@@ -103,9 +111,21 @@ export default {
     sport: '',
     computer: '',
     students: [],
+    numberRules: [
+      (v) => !!v || 'Field is required',
+      (v) => (v >= 0 && v !== null) || 'Value must be a non-negative number',
+    ],
   }),
   methods: {
     async saveInput() {
+      if (!this.studentId) {
+        alert('Please select a student before adding scores!');
+        return;
+      }
+      if (!this.isFormCompleted()) {
+        alert('Please fill in all required fields.');
+        return;
+      }
       const { valid } = await this.$refs.form.validate();
       if (valid) {
         const savedDataInput = {
@@ -122,7 +142,6 @@ export default {
           }
         };
         console.log(savedDataInput);
-        console.log('trigger student id ', this.studentId)
         try {
           await Service.addStudentScore(this.studentId, savedDataInput)
           this.$refs.form.reset();
@@ -133,10 +152,24 @@ export default {
         alert('Please fill in all required fields.');
       }
     },
-    handleEditStudentInfo(studentId) {
-      console.log('Received student ID:', studentId);
-      this.studentId = studentId;
+    isFormCompleted() {
+      return (
+        this.math !== '' &&
+        this.physic !== '' &&
+        this.chemistry !== '' &&
+        this.biology !== '' &&
+        this.khmer !== '' &&
+        this.english !== '' &&
+        this.sport !== '' &&
+        this.computer !== ''
+      );
+    },
+    handleEditStudentInfo(student) {
+      console.log('Received student ID:', student.id);
+      this.studentId = student.id;
       console.log('Updated studentId:', this.studentId);
+      this.studentName = student.fullName
+      console.log('this is whole student object!!!', student)
     },
 
 
@@ -144,11 +177,7 @@ export default {
       this.$refs.form.reset()
     }
   },
-  watch:  {
-    studentId(newStudentId){
-      this.currentFullName = this.getFullNameById(newStudentId)
-    }
-  },
+
   created() {
     console.log('Students data:', this.students);
   }

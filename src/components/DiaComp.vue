@@ -32,8 +32,8 @@
               <v-col cols="12">
                 <TextField label="Email"  class="input-field" v-model="email" required />
               </v-col>
-              <v-col cols="8">
-                <v-select :items="['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']" label="Class" class="input-field" required v-model="studentClass"> </v-select>
+              <v-col cols="12">
+                <v-select :items="['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']" label="Class" required v-model="studentClass"> </v-select>
               </v-col>
             </v-row>
           </v-form>
