@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const fs = require("fs");
 
 const db = require("../Server/mockdata/db.json");
-=======
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors');
-const fs = require('fs');
-const db = require('../Server/mockdata/db.json');
->>>>>>> f34f1c174529dce92e06a375406ecbeee7d1ef4c
 
 const app = express();
 app.use(cors());
@@ -36,7 +28,6 @@ app.get("/class/:id", (req, res) => {
   }
 });
 
-<<<<<<< HEAD
 app.post("/create-class", (req, res) => {
   try {
     const newClass = req.body;
@@ -90,15 +81,14 @@ app.get("/:email", (req, res) => {
       .json({ message: "No users found with the specified email" });
   }
 });
-=======
-app.get('/getStudents', (req, res) => {
+app.get("/getStudents", (req, res) => {
   try {
-    const students = db['Students'];
+    const students = db["Students"];
     res.json(students);
-    console.log('Backend Response:', students);
+    console.log("Backend Response:", students);
   } catch (error) {
-    console.error('Error retrieving students:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    console.error("Error retrieving students:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
@@ -114,7 +104,6 @@ app.get('/getStudents', (req, res) => {
 //     res.status(404).json({ message: 'No users found with the specified email' });
 //   }
 // });
->>>>>>> f34f1c174529dce92e06a375406ecbeee7d1ef4c
 
 app.post("/login", (req, res) => {
   const loginUser = req.body;
@@ -142,7 +131,6 @@ app.post("/login", (req, res) => {
 app.post("/user", (req, res) => {
   try {
     const newUser = req.body;
-<<<<<<< HEAD
     db["User"].push(newUser);
 
     fs.writeFileSync(
@@ -150,10 +138,11 @@ app.post("/user", (req, res) => {
       JSON.stringify(db)
     );
 
-=======
-    db['User'].push(newUser);
-    fs.writeFileSync(__dirname + '/../Server/mockdata/db.json', JSON.stringify(db));
->>>>>>> f34f1c174529dce92e06a375406ecbeee7d1ef4c
+    db["User"].push(newUser);
+    fs.writeFileSync(
+      __dirname + "/../Server/mockdata/db.json",
+      JSON.stringify(db)
+    );
     res.json({
       token: "loginSuccess",
     });
@@ -163,117 +152,131 @@ app.post("/user", (req, res) => {
       message: "Internal Server Error",
     });
   }
-<<<<<<< HEAD
 });
-=======
-})
-app.get('/student/:id', (req, res) => {
+app.get("/student/:id", (req, res) => {
   try {
     const studentId = parseInt(req.params.id);
-    const student = db['Students'].find((s) => s.id === studentId);
+    const student = db["Students"].find((s) => s.id === studentId);
     if (student) {
       res.json(student);
     } else {
-      res.status(404).json({ message: 'Student not found' });
+      res.status(404).json({ message: "Student not found" });
     }
   } catch (error) {
-    console.error('Error retrieving student:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    console.error("Error retrieving student:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
-app.post('/addStudents', (req, res) => {
+app.post("/addStudents", (req, res) => {
   try {
     const newStudent = req.body;
-    newStudent.id = db['Students'].length + 1;
-    db['Students'].push(newStudent);
+    newStudent.id = db["Students"].length + 1;
+    db["Students"].push(newStudent);
 
-    fs.writeFileSync(__dirname + '/../Server/mockdata/db.json', JSON.stringify(db));
+    fs.writeFileSync(
+      __dirname + "/../Server/mockdata/db.json",
+      JSON.stringify(db)
+    );
 
     res.json(newStudent);
   } catch (error) {
-    console.error('Error adding student:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    console.error("Error adding student:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
-app.put('/editStudents/:id', (req, res) => {
+app.put("/editStudents/:id", (req, res) => {
   try {
     const studentId = parseInt(req.params.id);
     const updatedStudent = req.body;
 
-    const index = db['Students'].findIndex((s) => s.id === studentId);
+    const index = db["Students"].findIndex((s) => s.id === studentId);
 
     if (index !== -1) {
-      db['Students'][index] = { ...db['Students'][index], ...updatedStudent };
+      db["Students"][index] = { ...db["Students"][index], ...updatedStudent };
 
-      fs.writeFileSync(__dirname + '/../Server/mockdata/db.json', JSON.stringify(db));
-      res.json(db['Students'][index]);
+      fs.writeFileSync(
+        __dirname + "/../Server/mockdata/db.json",
+        JSON.stringify(db)
+      );
+      res.json(db["Students"][index]);
     } else {
-      res.status(404).json({ message: 'Student not found' });
+      res.status(404).json({ message: "Student not found" });
     }
   } catch (error) {
-    console.error('Error updating student:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    console.error("Error updating student:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
-app.delete('/deleteStudents/:id', (req, res) => {
+app.delete("/deleteStudents/:id", (req, res) => {
   try {
     const studentId = parseInt(req.params.id);
-    const index = db['Students'].findIndex((s) => s.id === studentId);
+    const index = db["Students"].findIndex((s) => s.id === studentId);
 
     if (index !== -1) {
-      const deletedStudent = db['Students'].splice(index, 1)[0];
+      const deletedStudent = db["Students"].splice(index, 1)[0];
 
-      fs.writeFileSync(__dirname + '/../Server/mockdata/db.json', JSON.stringify(db));
+      fs.writeFileSync(
+        __dirname + "/../Server/mockdata/db.json",
+        JSON.stringify(db)
+      );
 
       res.json(deletedStudent);
     } else {
-      res.status(404).json({ message: 'Student not found' });
+      res.status(404).json({ message: "Student not found" });
     }
   } catch (error) {
-    console.error('Error deleting student:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    console.error("Error deleting student:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
-app.post('/addScore/:studentId', (req, res) => {
+app.post("/addScore/:studentId", (req, res) => {
   try {
     const studentId = parseInt(req.params.studentId);
     const newStudentScore = req.body;
 
     // Find the student in the Students database by ID
-    const studentIndex = db['Students'].findIndex((student) => student.id === studentId);
+    const studentIndex = db["Students"].findIndex(
+      (student) => student.id === studentId
+    );
 
     if (studentIndex !== -1) {
       // Check if the student already has a score in the studentScore database
-      const scoreIndex = db['studentScore'].findIndex((score) => score.studentId === studentId);
+      const scoreIndex = db["studentScore"].findIndex(
+        (score) => score.studentId === studentId
+      );
 
       if (scoreIndex !== -1) {
         // If the student already has a score, update it
-        db['studentScore'][scoreIndex].scores = { ...db['studentScore'][scoreIndex].scores, ...newStudentScore.scores };
+        db["studentScore"][scoreIndex].scores = {
+          ...db["studentScore"][scoreIndex].scores,
+          ...newStudentScore.scores,
+        };
       } else {
         // If the student doesn't have a score, create one
         const newScore = {
           studentId: studentId,
           scores: newStudentScore.scores,
         };
-        db['studentScore'].push(newScore);
+        db["studentScore"].push(newScore);
       }
 
-      fs.writeFileSync(__dirname + '/../Server/mockdata/db.json', JSON.stringify(db));
+      fs.writeFileSync(
+        __dirname + "/../Server/mockdata/db.json",
+        JSON.stringify(db)
+      );
       res.json(newStudentScore);
     } else {
-      res.status(404).json({ message: 'Student not found' });
+      res.status(404).json({ message: "Student not found" });
     }
   } catch (error) {
-    console.error('Error adding student score:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Error adding student score:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
-
->>>>>>> f34f1c174529dce92e06a375406ecbeee7d1ef4c
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
