@@ -23,7 +23,7 @@
             </div>
             <v-row justify="end">
               <v-col cols="2">
-                <edit-user-dia class="m-4" :students="students" />
+                <edit-user-dia class="m-4" :students="students"/>
               </v-col>
               <v-col cols="2" class="m-2">
                 <v-dialog v-model="dialog" width="400">
@@ -86,7 +86,7 @@ export default {
       }
     },
     editStudentInfo(student) {
-      this.$emit('edit-student-info', student.id);
+      this.$emit('edit-student-info', student);
       console.log('Editing student:', student);
     },
     showDeleteDialog(student) {
