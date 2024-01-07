@@ -1,5 +1,146 @@
-<<<<<<< HEAD
-{"User":[],"Class":[{"id":1,"className":"Pre-fab homes","src":"https://cdn.vuetifyjs.com/images/cards/house.jpg","Grade":"Secondary"},{"id":2,"className":"Favorite road trips","src":"https://cdn.vuetifyjs.com/images/cards/road.jpg","Grade":"High School"},{"id":175311746749,"className":"M8","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png","Grade":"College"},{"id":401367616024,"className":"M8","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704346380/class_img/siia6xofom8rfeviajv1.png","Grade":"High School","time":"January 8th 2024, 12:20:36 am"},{"id":244793619417,"className":"Chemistry","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704648336/class_img/oqcnlemgih6qgbuafvuj.png","Grade":"High School","time":"January 8th 2024, 12:25:53 am"}],"RecentlyOpen":[{"id":2,"className":"Favorite road trips","src":"https://cdn.vuetifyjs.com/images/cards/road.jpg","Grade":"High School"},{"id":175311746749,"className":"M8","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png","Grade":"College"},{"id":401367616024,"className":"M8","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704346380/class_img/siia6xofom8rfeviajv1.png","Grade":"High School"},{"id":1,"className":"Pre-fab homes","src":"https://cdn.vuetifyjs.com/images/cards/house.jpg","Grade":"Secondary","time":"January 8th 2024, 12:20:36 am"},{"id":1,"className":"Pre-fab homes","src":"https://cdn.vuetifyjs.com/images/cards/house.jpg","Grade":"Secondary","time":"January 8th 2024, 12:24:34 am"},{"id":175311746749,"className":"M8","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png","Grade":"College","time":"January 8th 2024, 12:25:02 am"},{"id":244793619417,"className":"Chemistry","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704648336/class_img/oqcnlemgih6qgbuafvuj.png","Grade":"High School","time":"January 8th 2024, 12:26:15 am"}],"Students":[{"id":1,"name":"John Doe","age":20,"grade":"A"},{"id":2,"name":"Jane Doe","age":21,"grade":"B"},{"id":3,"name":"Bob Smith","age":22,"grade":"C"}]}
-=======
-{"User":[],"Students":[{"fullName":"Chansovanmony Yoeun","age":"20","email":"chansovanmonyyoeun03@gmail.com","gender":"F","studentClass":"B","id":1},{"fullName":"Jennie","age":"12","email":"chansovanmonyyoeun03@gmail.com","gender":"M","studentClass":"D","id":2}],"studentScore":[{"studentId":1,"scores":{"math":"2","physic":"2","chemistry":"2","biology":"2","khmer":"2","english":"2","sport":"2","computer":"2"}},{"studentId":2,"scores":{"math":"22","physic":null,"chemistry":null,"biology":null,"khmer":"19","english":null,"sport":null,"computer":null}}]}
->>>>>>> f34f1c174529dce92e06a375406ecbeee7d1ef4c
+{
+  "User": [],
+  "Class": [
+    {
+      "id": 1,
+      "className": "Pre-fab homes",
+      "src": "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+      "Grade": "Secondary"
+    },
+    {
+      "id": 2,
+      "className": "Favorite road trips",
+      "src": "https://cdn.vuetifyjs.com/images/cards/road.jpg",
+      "Grade": "High School"
+    },
+    {
+      "id": 175311746749,
+      "className": "M8",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png",
+      "Grade": "College"
+    },
+    {
+      "id": 401367616024,
+      "className": "M8",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704346380/class_img/siia6xofom8rfeviajv1.png",
+      "Grade": "High School",
+      "time": "January 8th 2024, 12:20:36 am"
+    },
+    {
+      "id": 244793619417,
+      "className": "Chemistry",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704648336/class_img/oqcnlemgih6qgbuafvuj.png",
+      "Grade": "High School",
+      "time": "January 8th 2024, 12:25:53 am"
+    }
+  ],
+  "RecentlyOpen": [
+    {
+      "id": 2,
+      "className": "Favorite road trips",
+      "src": "https://cdn.vuetifyjs.com/images/cards/road.jpg",
+      "Grade": "High School"
+    },
+    {
+      "id": 175311746749,
+      "className": "M8",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png",
+      "Grade": "College"
+    },
+    {
+      "id": 401367616024,
+      "className": "M8",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704346380/class_img/siia6xofom8rfeviajv1.png",
+      "Grade": "High School"
+    },
+    {
+      "id": 1,
+      "className": "Pre-fab homes",
+      "src": "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+      "Grade": "Secondary",
+      "time": "January 8th 2024, 12:20:36 am"
+    },
+    {
+      "id": 1,
+      "className": "Pre-fab homes",
+      "src": "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+      "Grade": "Secondary",
+      "time": "January 8th 2024, 12:24:34 am"
+    },
+    {
+      "id": 175311746749,
+      "className": "M8",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png",
+      "Grade": "College",
+      "time": "January 8th 2024, 12:25:02 am"
+    },
+    {
+      "id": 244793619417,
+      "className": "Chemistry",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704648336/class_img/oqcnlemgih6qgbuafvuj.png",
+      "Grade": "High School",
+      "time": "January 8th 2024, 12:26:15 am"
+    }
+  ],
+  "Students": [
+    { "id": 1, "name": "John Doe", "age": 20, "grade": "A" },
+    { "id": 2, "name": "Jane Doe", "age": 21, "grade": "B" },
+    { "id": 3, "name": "Bob Smith", "age": 22, "grade": "C" }
+  ],
+  "studentScore": [
+    {
+      "studentId": 1,
+      "scores": {
+        "math": "2",
+        "physic": "2",
+        "chemistry": "2",
+        "biology": "2",
+        "khmer": "2",
+        "english": "2",
+        "sport": "2",
+        "computer": "2"
+      }
+    },
+    {
+      "studentId": 2,
+      "scores": {
+        "math": "22",
+        "physic": null,
+        "chemistry": null,
+        "biology": null,
+        "khmer": "19",
+        "english": null,
+        "sport": null,
+        "computer": null
+      }
+    }
+  ],
+  "studentScore": [
+    {
+      "studentId": 1,
+      "scores": {
+        "math": "2",
+        "physic": "2",
+        "chemistry": "2",
+        "biology": "2",
+        "khmer": "2",
+        "english": "2",
+        "sport": "2",
+        "computer": "2"
+      }
+    },
+    {
+      "studentId": 2,
+      "scores": {
+        "math": "22",
+        "physic": null,
+        "chemistry": null,
+        "biology": null,
+        "khmer": "19",
+        "english": null,
+        "sport": null,
+        "computer": null
+      }
+    }
+  ]
+}
