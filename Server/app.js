@@ -67,20 +67,20 @@ app.post("/add-recent-class", (req, res) => {
   }
 });
 
-app.get("/:email", (req, res) => {
-  let email = req.params.email;
-  console.log(`Searching for users with email ${email}`);
+// app.get("/:email", (req, res) => {
+//   let email = req.params.email;
+//   console.log(`Searching for users with email ${email}`);
 
-  const matchingUsers = db["User"].filter((user) => user.email === email);
+//   const matchingUsers = db["User"].filter((user) => user.email === email);
 
-  if (matchingUsers.length > 0) {
-    res.json(matchingUsers);
-  } else {
-    res
-      .status(404)
-      .json({ message: "No users found with the specified email" });
-  }
-});
+//   if (matchingUsers.length > 0) {
+//     res.json(matchingUsers);
+//   } else {
+//     res
+//       .status(404)
+//       .json({ message: "No users found with the specified email" });
+//   }
+// });
 app.get("/getStudents", (req, res) => {
   try {
     const students = db["Students"];
@@ -91,19 +91,6 @@ app.get("/getStudents", (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 });
-
-// app.get('/:email', (req, res) => {
-//   let email = req.params.email;
-//   console.log(`Searching for users with email ${email}`);
-
-//   const matchingUsers = db['User'].filter(user => user.email === email);
-
-//   if (matchingUsers.length > 0) {
-//     res.json(matchingUsers);
-//   } else {
-//     res.status(404).json({ message: 'No users found with the specified email' });
-//   }
-// });
 
 app.post("/login", (req, res) => {
   const loginUser = req.body;
