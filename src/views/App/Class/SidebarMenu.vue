@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-app-bar app  color="#2C3E50">
+    <v-app-bar app color="#2C3E50">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-app-bar-title>Classroom</v-app-bar-title>
       <v-spacer></v-spacer>
@@ -9,13 +9,24 @@
       </v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer app v-model="drawer"  width="300" class="sidebar" color="#2C3E50">
+    <v-navigation-drawer
+      app
+      v-model="drawer"
+      width="300"
+      class="sidebar"
+      color="#2C3E50"
+    >
       <v-list dense>
         <v-list-item-group>
           <v-list-item v-for="(item, i) in items" :key="i">
             <v-list-item-content>
-              <v-list-item-title @click="handleItemClick(item)" :class="{ 'router-button': currentRoute === item.route }"> <v-icon v-if="item.icon">{{ item.icon }}</v-icon>
-                {{ item.title }}</v-list-item-title>
+              <v-list-item-title
+                @click="handleItemClick(item)"
+                :class="{ 'router-button': currentRoute === item.route }"
+              >
+                <v-icon v-if="item.icon">{{ item.icon }}</v-icon>
+                {{ item.title }}</v-list-item-title
+              >
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
@@ -34,7 +45,7 @@
         <v-row>
           <v-col v-for="n in 24" :key="n" cols="4">
             <v-card height="250">
-              <CardComp/>
+              <CardComp />
             </v-card>
           </v-col>
         </v-row>
@@ -45,7 +56,7 @@
 </template>
 
 <script>
-import CardComp from '@/components/CardComp.vue';
+import CardComp from "@/components/CardComp.vue";
 
 export default {
   components: {
@@ -56,17 +67,25 @@ export default {
     currentRoute: null,
     items: [
       // { title: 'class', route: 'class', icon: 'mdi-view-dashboard' },
-      { title: 'Dashboard', route: 'dashboard', icon: 'mdi-view-dashboard' },
-      { title: 'Attendance', route: 'attendance', icon: 'mdi-account-check' },
-      { title: 'Score Grading', route: 'score-grading', icon: 'mdi-format-list-numbered' },
-      { title: 'Generate Overall Performance Report', route: 'performance-report', icon: 'mdi-chart-bar' },
-      { title: 'Setting', route: 'setting', icon: 'mdi-cog' },
+      { title: "Dashboard", route: "dashboard", icon: "mdi-view-dashboard" },
+      { title: "Attendance", route: "attendance", icon: "mdi-account-check" },
+      {
+        title: "Score Grading",
+        route: "score-grading",
+        icon: "mdi-format-list-numbered",
+      },
+      {
+        title: "Generate Overall Performance Report",
+        route: "performance-report",
+        icon: "mdi-chart-bar",
+      },
+      { title: "Setting", route: "setting", icon: "mdi-cog" },
     ],
   }),
   methods: {
     handleItemClick(item) {
       console.log(`Clicked on ${item.title}`);
-      this.$router.push({name:item.route})
+      this.$router.push({ name: item.route });
     },
   },
   watch: {
@@ -82,12 +101,12 @@ export default {
 </script>
 <style>
 .sidebar {
-  background-color: #2C3E50;
-  color: #ECF0F1;
+  background-color: #2c3e50;
+  color: #ecf0f1;
 }
 
 .sidebar v-list-item-title {
-  color: #ECF0F1;
+  color: #ecf0f1;
 }
 
 .router-button {
@@ -103,7 +122,4 @@ export default {
 .logout-button:hover {
   background-color: #e74c3c;
 }
-
 </style>
-
-

@@ -36,11 +36,6 @@
               indeterminate
             ></v-progress-linear>
           </template>
-          <!-- <v-img v-if="url" :src="url"></v-img> -->
-
-          <!-- <div>
-            <button @click="openUploadModal">Upload files</button>
-          </div> -->
 
           <v-img cover height="200" v-if="img" :src="img">
             <v-row class="pa-3">
@@ -58,7 +53,7 @@
                       accept="image/png, image/jpeg, image/bmp"
                       prepend-icon="mdi-camera"
                     >
-                      Upload
+                      <v-icon icon="fa:fas fa-edit"></v-icon>
                     </div>
                   </template>
                 </v-menu>
@@ -94,7 +89,11 @@
                       accept="image/png, image/jpeg, image/bmp"
                       prepend-icon="mdi-camera"
                     >
-                      <v-icon end icon="mdi-camera"></v-icon>
+                      <v-icon
+                        end
+                        icon="mdi-camera"
+                        class="text-white camera-icon"
+                      ></v-icon>
                     </div>
                   </template>
                 </v-menu>
@@ -180,6 +179,9 @@
 .add-new-class :hover {
   cursor: pointer;
 }
+.camera-icon {
+  cursor: pointer;
+}
 </style>
 <script>
 import { Service } from "@/Service/MockService";
@@ -244,17 +246,6 @@ export default {
     };
   },
   methods: {
-    // onFileChange(e) {
-    //   const file = e.target.files[0];
-    //   // this.img = URL.createObjectURL(file);
-    //   const reader = new FileReader();
-    //   reader.readAsDataURL(file);
-    //   reader.onload = (e) => {
-    //     this.img = e.target.result;
-    //     console.log(this.img);
-    //   };
-    // },
-
     openUploadModal() {
       window.cloudinary
         .openUploadWidget(
@@ -268,19 +259,6 @@ export default {
         )
         .open();
     },
-
-    // onFileChange: function (e) {
-    //   const file = e.target.files[0];
-
-    //   let reader = new FileReader();
-    //   reader.readAsDataURL(file);
-
-    //   reader.onload = () => {
-    //     // this.img = e.target.result;
-    //     this.img = URL.createObjectURL(file);
-    //     console.log(this.img);
-    //   };
-    // },
 
     ClassName(e) {
       this.className = e.target.value;

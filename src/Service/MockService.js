@@ -50,6 +50,7 @@ export const Service = {
       console.log(e);
     }
   },
+
   async getStudents() {
     try {
       const response = await axios.get("http://localhost:8080/getStudents");

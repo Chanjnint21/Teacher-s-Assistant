@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <v-app-bar extended color="#2C3E50">
       <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
-      <v-toolbar-className>Your Dashboard</v-toolbar-className>
+      <div class="ml-5">Your Dashboard</div>
 
       <v-spacer></v-spacer>
       <p>You logged as <b> Koemnak GK</b></p>
@@ -101,7 +101,7 @@
         <v-sheet color="grey-lighten-4">
           <v-sheet
             color="grey-lighten-2"
-            class="text-center ma-5"
+            class="text-center m-5"
             rounded="pill"
             width="130"
           >
@@ -117,7 +117,9 @@
                 width="250"
               >
                 <v-img :src="n.src" class="text-white align-end" cover>
-                  <v-card-className>{{ n.className }}</v-card-className>
+                  <v-card-className class="ml-5">{{
+                    n.className
+                  }}</v-card-className>
                 </v-img>
               </v-sheet>
             </v-slide-group-item>
@@ -159,22 +161,25 @@
                       ? true
                       : false
                   "
+                  @click="GetAClass(card.id)"
                 >
                   <v-img
                     :src="card.src"
                     :lazy-src="card.src"
-                    class="align-start"
+                    class="align-end w-100"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                    height="200px"
+                    height="200"
                     cover
-                    width="250px"
                   >
-                    <v-card-className class="text-white ml-2">
-                      <!-- {{ card.className }} -->
-                      <v-icon end icon="mdi-dots-vertical"></v-icon>
-                    </v-card-className>
+                    <div class="card-info d-flex pa-2 justify-space-between">
+                      <v-card-className class="text-white ml-5">
+                        {{ card.className }}
+                      </v-card-className>
+                      <div class="dots-icon text-white">
+                        <v-icon end icon="mdi-dots-vertical"></v-icon>
+                      </div>
+                    </div>
                   </v-img>
-
                   <v-card-actions>
                     <v-card-className class="text-white ml-2">
                       {{ card.className.toUpperCase() }}
@@ -399,6 +404,7 @@ export default {
     DropDown() {
       console.log((this.isDropDown = !this.isDropDown));
     },
+
     async GetAClass(classId) {
       await axios
         .get("http://localhost:8080/class/" + classId)
@@ -415,6 +421,7 @@ export default {
             Service.AddRecentClass(newOpen).then(
               () => {
                 console.log("good work");
+                this.$router.push("/class");
               },
               (err) => {
                 console.log(err);
@@ -454,6 +461,12 @@ export default {
   mounted() {
     this.getClasses();
     this.getRecentOpenClasses();
+    if (
+      localStorage.getItem("token") === "" ||
+      localStorage.getItem("token") === null
+    ) {
+      this.$router.push("/login");
+    }
   },
 };
 </script>

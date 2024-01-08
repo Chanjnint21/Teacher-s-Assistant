@@ -50,7 +50,7 @@ app.post("/create-class", (req, res) => {
 app.post("/add-recent-class", (req, res) => {
   try {
     const recentClass = req.body;
-    db["RecentlyOpen"].push(recentClass);
+    db["RecentlyOpen"].unshift(recentClass);
     fs.writeFileSync(
       __dirname + "/../Server/mockdata/db.json",
       JSON.stringify(db)
