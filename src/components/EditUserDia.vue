@@ -19,7 +19,7 @@
                     <TextField label="Full Name" class="input-field" v-model="updateFullName" required />
                   </v-col>
                   <v-col cols="12">
-                    <TextField label="Age" class="input-field" v-model="updateAge" required />
+                    <TextField label="Date of Birth" class="input-field" v-model="DOB" required />
                   </v-col>
                   <v-col cols="12">
                     <TextField label="Gender" class="input-field" v-model="updateGender" required />
@@ -28,7 +28,7 @@
                     <TextField label="Email" class="input-field" v-model="updateEmail" required />
                   </v-col>
                   <v-col cols="12">
-                    <v-select :items="['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']" label="Class" required v-model="updateStudentClass"> </v-select>
+                    <v-select :items="['M1', 'M2', 'M3', 'M4', 'M5', 'M6']" label="Class" required v-model="updateStudentClass"> </v-select>
                   </v-col>
                 </v-row>
               </v-form>
@@ -55,7 +55,7 @@ export default {
   data: () => ({
     dialog: false,
     updateFullName: '',
-    updateAge: '',
+    DOB: '',
     updateEmail: '',
     updateStudentClass: ' ',
     updateGender: '',
@@ -72,10 +72,12 @@ export default {
       if (valid) {
         const updatedStudentData = {
           fullName: this.updateFullName,
-          age: this.updateAge,
+          DOB: this.DOB,
           email: this.updateEmail,
           gender: this.updateGender,
-          studentClass: this.updateStudentClass,
+          class: this.updateStudentClass,
+          attendance: 100,
+          attendances: { }
         };
 
         try {

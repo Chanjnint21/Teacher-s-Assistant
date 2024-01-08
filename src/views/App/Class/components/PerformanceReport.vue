@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <v-container fluid>
     <v-row>
       <v-col cols="6">
         <br />
         <v-row>
           <v-col cols="10">
             <div>
-              <h2 class="ml-4">Student's List Name</h2>
+              <h3 class="ml-4">Student's List Name</h3>
             </div>
           </v-col>
           <v-col cols="2">
@@ -26,7 +26,7 @@
       <v-col cols="6">
         <br />
         <div>
-          <h2 class="mr-4">Overall Report:</h2>
+          <h3 class="mr-4">Overall Report:</h3>
           <br>
           <v-row v-if="studentScores && Object.keys(studentScores).length > 0">
             <v-spacer></v-spacer>
@@ -53,7 +53,7 @@
           </v-row>
           <v-row v-else>
             <v-col class="text-center">
-              <h1>Please choose a student to view scores.</h1>
+              <h4>Please choose a student to view scores.</h4>
             </v-col>
           </v-row>
 
@@ -62,7 +62,7 @@
         </div>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -153,7 +153,7 @@ span {
   color: black;
 }
 
-h1 {
+h4 {
 
   color: #FF0000; /* Adjust the color for the error message */
 }

@@ -1,1 +1,197 @@
-{"User":[{"email":"heatkoemnak@gmail.com","password":"Kim2002kk"}],"Class":[{"id":1,"className":"Codding","src":"https://cdn.vuetifyjs.com/images/cards/house.jpg","Grade":"Secondary","time":"January 8th 2024"},{"id":2,"className":"Sport","src":"https://cdn.vuetifyjs.com/images/cards/road.jpg","Grade":"High School","time":"January 8th 2024"},{"id":175311746749,"className":"Khmer","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png","Grade":"College","time":"January 8th 2024"},{"id":401367616024,"className":"Math","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704346380/class_img/siia6xofom8rfeviajv1.png","Grade":"High School","time":"January 8th 2024"},{"id":244793619417,"className":"Chemistry","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704648336/class_img/oqcnlemgih6qgbuafvuj.png","Grade":"High School","time":"January 8th 2024"},{"id":842180054112,"className":"Science","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704704862/class_img/bdgxntuwc9eydhhkyeob.jpg","Grade":"College","time":"January 8th 2024"}],"RecentlyOpen":[{"id":2,"className":"Sport","src":"https://cdn.vuetifyjs.com/images/cards/road.jpg","Grade":"High School","time":"January 8th 2024"},{"id":1,"className":"Codding","src":"https://cdn.vuetifyjs.com/images/cards/house.jpg","Grade":"Secondary","time":"January 8th 2024"},{"id":401367616024,"className":"Math","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704346380/class_img/siia6xofom8rfeviajv1.png","Grade":"High School","time":"January 8th 2024"},{"id":1,"className":"Codding","src":"https://cdn.vuetifyjs.com/images/cards/house.jpg","Grade":"Secondary","time":"January 8th 2024"},{"id":2,"className":"Sport","src":"https://cdn.vuetifyjs.com/images/cards/road.jpg","Grade":"High School","time":"January 8th 2024"},{"id":244793619417,"className":"Chemistry","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704648336/class_img/oqcnlemgih6qgbuafvuj.png","Grade":"High School","time":"January 8th 2024"},{"id":175311746749,"className":"English","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png","Grade":"College","time":"January 8th 2024"},{"id":401367616024,"className":"Khmer","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704346380/class_img/siia6xofom8rfeviajv1.png","Grade":"High School","time":"January 8th 2024"},{"id":140367616024,"className":"Codding","src":"https://cdn.vuetifyjs.com/images/cards/house.jpg","Grade":"Secondary","time":"January 9th 2024"},{"id":175311746749,"className":"Biology","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png","Grade":"College","time":"January 8th 2024"},{"id":244793619417,"className":"Chemistry","src":"http://res.cloudinary.com/dakqa3htw/image/upload/v1704648336/class_img/oqcnlemgih6qgbuafvuj.png","Grade":"High School","time":"January 8th 2024"},{"id":244793619917,"className":"Computer","src":"https://cdn.vuetifyjs.com/images/cards/house.jpg","Grade":"Secondary","time":"January 8th 2024"}],"Students":[{"fullName":"chansovanmony yoeun","age":"20","email":"chansovanmonyyoeun03@gmail.com","gender":"F","studentClass":"Computer","id":4,"classId":244793619917},{"fullName":"cha","age":"11","email":"1","gender":"1","studentClass":"Chemistry","id":5,"classId":244793619417}],"studentScore":[{"studentId":1,"scores":{"math":"2","physic":"2","chemistry":"2","biology":"2","khmer":"2","english":"2","sport":"2","computer":"2"}},{"studentId":2,"scores":{"math":"22","physic":null,"chemistry":null,"biology":null,"khmer":"19","english":null,"sport":null,"computer":null}},{"studentId":4,"scores":{"math":"12","physic":"22","chemistry":"22","biology":"22","khmer":"12","english":"12","sport":"12","computer":"12"}}]}
+{
+  "User": [{ "email": "heatkoemnak@gmail.com", "password": "Kim2002kk" }],
+  "Class": [
+    {
+      "id": 1,
+      "className": "Codding",
+      "src": "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+      "Grade": "Secondary",
+      "time": "January 8th 2024"
+    },
+    {
+      "id": 2,
+      "className": "Sport",
+      "src": "https://cdn.vuetifyjs.com/images/cards/road.jpg",
+      "Grade": "High School",
+      "time": "January 8th 2024"
+    },
+    {
+      "id": 175311746749,
+      "className": "Khmer",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png",
+      "Grade": "College",
+      "time": "January 8th 2024"
+    },
+    {
+      "id": 401367616024,
+      "className": "Math",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704346380/class_img/siia6xofom8rfeviajv1.png",
+      "Grade": "High School",
+      "time": "January 8th 2024"
+    },
+    {
+      "id": 244793619417,
+      "className": "Chemistry",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704648336/class_img/oqcnlemgih6qgbuafvuj.png",
+      "Grade": "High School",
+      "time": "January 8th 2024"
+    }
+  ],
+  "RecentlyOpen": [
+    {
+      "id": 175311746749,
+      "className": "English",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png",
+      "Grade": "College",
+      "time": "January 8th 2024"
+    },
+    {
+      "id": 401367616024,
+      "className": "Khmer",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704346380/class_img/siia6xofom8rfeviajv1.png",
+      "Grade": "High School",
+      "time": "January 8th 2024"
+    },
+    {
+      "id": 140367616024,
+      "className": "Codding",
+      "src": "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+      "Grade": "Secondary",
+      "time": "January 9th 2024"
+    },
+    {
+      "id": 175311746749,
+      "className": "Biology",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704343583/class_img/eshnbeku8xyxmag8yszq.png",
+      "Grade": "College",
+      "time": "January 8th 2024"
+    },
+    {
+      "id": 244793619417,
+      "className": "Chemistry",
+      "src": "http://res.cloudinary.com/dakqa3htw/image/upload/v1704648336/class_img/oqcnlemgih6qgbuafvuj.png",
+      "Grade": "High School",
+      "time": "January 8th 2024"
+    },
+    {
+      "id": 244793619917,
+      "className": "Computer",
+      "src": "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+      "Grade": "Secondary",
+      "time": "January 8th 2024"
+    }
+  ],
+  "Students": [
+    {
+      "fullName": "chansovanmony yoeun",
+      "attendance": 100,
+      "attendances": {},
+      "age": "20",
+      "email": "chansovanmonyyoeun03@gmail.com",
+      "gender": "F",
+      "class": "M4",
+      "id": 1
+    },
+    {
+      "fullName": "cha",
+      "attendance": 100,
+      "attendances": {},
+      "age": "11",
+      "email": "1",
+      "gender": "F",
+      "class": "M4",
+      "id": 2
+    },
+    {
+      "fullName": "Lim Chanjnint",
+      "DOB": "05/10/1990",
+      "email": "limchanjnint@gmail.com",
+      "gender": "M",
+      "class": "M4",
+      "attendance": 100,
+      "attendances": {},
+      "id": 3
+    },
+    {
+      "fullName": "Heat Koemnak",
+      "DOB": "01/05/2002",
+      "email": "heatexample@gmail.com",
+      "gender": "M",
+      "class": "M4",
+      "attendance": 100,
+      "attendances": {},
+      "id": 4
+    },
+    {
+      "fullName": "Jouen Jet",
+      "DOB": "16/01/2001",
+      "email": "example123@gmail.com",
+      "gender": "M",
+      "class": "M4",
+      "attendance": 100,
+      "attendances": {},
+      "id": 5
+    },
+    {
+      "fullName": "So Pheary",
+      "DOB": "09/12/2005",
+      "email": "sophary01@gmail.com",
+      "gender": "F",
+      "class": "M4",
+      "attendance": 100,
+      "attendances": {},
+      "id": 6
+    },
+    {
+      "fullName": "Chan Sokha",
+      "DOB": "9/10/2003",
+      "email": "sokha90@gmail.com",
+      "gender": "M",
+      "class": "M4",
+      "attendance": 100,
+      "attendances": {},
+      "id": 7
+    }
+  ],
+  "studentScore": [
+    {
+      "studentId": 1,
+      "scores": {
+        "math": "2",
+        "physic": "2",
+        "chemistry": "2",
+        "biology": "2",
+        "khmer": "2",
+        "english": "2",
+        "sport": "2",
+        "computer": "2"
+      }
+    },
+    {
+      "studentId": 2,
+      "scores": {
+        "math": "22",
+        "physic": null,
+        "chemistry": null,
+        "biology": null,
+        "khmer": "19",
+        "english": null,
+        "sport": null,
+        "computer": null
+      }
+    },
+    {
+      "studentId": 4,
+      "scores": {
+        "math": "12",
+        "physic": "22",
+        "chemistry": "22",
+        "biology": "22",
+        "khmer": "12",
+        "english": "12",
+        "sport": "12",
+        "computer": "12"
+      }
+    }
+  ]
+}

@@ -87,7 +87,7 @@
               <v-spacer></v-spacer>
 
               <v-btn variant="text" @click="menu = false"> </v-btn>
-              <v-btn color="primary" variant="text" @click="menu = false">
+              <v-btn color="primary" variant="text" @click="onLogout" block>
                 LOGOUT
               </v-btn>
             </v-card-actions>
@@ -392,6 +392,9 @@ export default {
     // ],
   }),
   methods: {
+    onLogout(){
+      this.$router.push('/login')
+    },
     getItem(itemTitle) {
       if (itemTitle === "Edit") {
         this.idUpdate = true;
