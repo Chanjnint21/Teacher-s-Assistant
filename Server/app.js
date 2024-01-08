@@ -278,6 +278,26 @@ app.post("/addScore/:studentId", (req, res) => {
   }
 });
 
+
+app.get('/getStudentScores/:studentId', (req, res) => {
+  try {
+    const studentId = parseInt(req.params.studentId);
+    const scoreIndex = db['studentScore'].findIndex((score) => score.studentId === studentId);
+
+    if (scoreIndex !== -1) {
+      const studentScores = db['studentScore'][scoreIndex].scores;
+      res.json(studentScores);
+    } else {
+      res.status(404).json({ message: 'Student scores not found' });
+    }
+  } catch (error) {
+    console.error('Error getting student scores:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });

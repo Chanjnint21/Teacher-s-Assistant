@@ -22,9 +22,9 @@
               </v-avatar>
             </div>
             <v-row justify="end">
-              <v-col cols="2">
+              <!-- <v-col cols="2">
                 <edit-user-dia class="m-4" :students="students"/>
-              </v-col>
+              </v-col> -->
               <v-col cols="2" class="m-2">
                 <v-dialog v-model="dialog" width="400">
                   <template v-slot:activator="{ props }">
@@ -61,7 +61,7 @@
 
 <script>
 import { Service } from '@/Service/MockService';
-import EditUserDia from '@/components/EditUserDia'
+// import EditUserDia from '@/components/EditUserDia'
 
 export default {
   name: 'StudentCard',
@@ -73,7 +73,7 @@ export default {
     };
   },
   components: {
-    EditUserDia
+    // EditUserDia
   },
   methods: {
     async fetchStudentData() {
