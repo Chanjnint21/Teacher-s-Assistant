@@ -409,7 +409,7 @@ export default {
             className: response.data[0].className,
             src: response.data[0].src,
             Grade: response.data[0].Grade,
-            time: moment().format("MMMM Do YYYY, h:mm:ss a"),
+            time: moment().format("MMMM Do YYYY"),
           };
           console.log(newOpen);
           if (newOpen) {

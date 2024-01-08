@@ -1,5 +1,5 @@
 <template>
-  <v-card class="text-center pa-3" elevation="0" style="width: 60%;">
+  <v-card class="text-center pa-3" elevation="0" style="width: 60%">
     <v-form v-model="formValidate">
       <v-row>
         <v-col cols="12">
@@ -19,7 +19,7 @@
         </v-col>
         <v-col cols="12">
           <v-text-field
-          v-model="Password"
+            v-model="Password"
             label="Password"
             rounded
             variant="outlined"
@@ -50,18 +50,14 @@
           <span>- or login with -</span>
         </v-col>
         <v-col cols="12">
-          <v-btn
-            rounded
-            block
-          >
-            <v-icon>
-              mdi-google
-            </v-icon>
+          <v-btn rounded block>
+            <v-icon> mdi-google </v-icon>
             Google
           </v-btn>
         </v-col>
         <v-col cols="12">
-          Don't have account yet? <router-link to="/signup" style="color: #212121">Sign Up</router-link>
+          Don't have account yet?
+          <router-link to="/signup" style="color: #212121">Sign Up</router-link>
         </v-col>
       </v-row>
     </v-form>
@@ -69,41 +65,41 @@
 </template>
 
 <script>
-import { Service } from '@/Service/MockService'
+import { Service } from "@/Service/MockService";
 
 export default {
-  name: 'SignUp',
+  name: "SignUp",
   data() {
     return {
-      Email: '',
-      Password: '',
-      PasswordError: '',
+      Email: "",
+      Password: "",
+      PasswordError: "",
       visible: false,
-      formValidate: false
-    }
+      formValidate: false,
+    };
   },
   watch: {
     Password(newVal) {
-      if(newVal){
-        this.PasswordError = '';
+      if (newVal) {
+        this.PasswordError = "";
       }
-    }
+    },
   },
   methods: {
     async onLogin() {
       const UserInp = {
         email: this.Email,
-        password: this.Password
-      }
-      await Service.SignIn(UserInp)
-      const auth = localStorage.getItem('token')
-      if(auth === '"loginSuccess"'){
-        this.$router.push('/dashboard')
+        password: this.Password,
+      };
+      await Service.SignIn(UserInp);
+      const auth = localStorage.getItem("token");
+      if (auth === "loginSuccess") {
+        this.$router.push("/dashboard");
       }
     },
-    required (v) {
-        return !!v || 'The following Field is required'
-      },
-  }
-}
+    required(v) {
+      return !!v || "The following Field is required";
+    },
+  },
+};
 </script>

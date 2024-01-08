@@ -296,7 +296,7 @@ export default {
         className: this.className,
         src: this.img,
         Grade: this.gradeSelected,
-        time: moment().format("MMMM Do YYYY, h:mm:ss a"),
+        time: moment().format("MMMM Do YYYY"),
       };
       if (data) {
         await Service.CreateClass(data).then(
