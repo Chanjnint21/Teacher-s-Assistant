@@ -95,23 +95,27 @@ app.get("/getStudents", (req, res) => {
 app.post("/login", (req, res) => {
   const loginUser = req.body;
   console.log(loginUser);
-  // Check credentials against database and return a token on success
-  console.log("Logging in " + loginUser.email);
-  const usernameExists = db["User"].some(
-    (user) => user.email == loginUser.email
-  );
-  if (!usernameExists) {
-    res.status(401).send("Username does not exist");
-  } else {
-    if (
-      loginUser.password ==
-      db["User"].find((u) => u.email == loginUser.email).password
-    ) {
-      // const jwtToken = createJWT(loginUser.username);
-      res.json({ token: "loginSuccess" });
+  try {
+    const usernameExists = db["User"].some(
+      (user) => user.email == loginUser.email
+    );
+    if (!usernameExists) {
+      res.status(401).send("Username does not exist");
     } else {
-      res.status(403).send("Wrong password");
+      const passwordMatches = db["User"].some(
+        (user) => user.password == loginUser.password
+      );
+      if (!passwordMatches) {
+        res.status(401).send("Password does not match");
+      } else {
+        res.json({
+          token: "loginSuccess",
+        });
+      }
     }
+  } catch (error) {
+    console.error("Error retrieving users:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 
@@ -120,12 +124,6 @@ app.post("/user", (req, res) => {
     const newUser = req.body;
     db["User"].push(newUser);
 
-    fs.writeFileSync(
-      __dirname + "/../Server/mockdata/db.json",
-      JSON.stringify(db)
-    );
-
-    db["User"].push(newUser);
     fs.writeFileSync(
       __dirname + "/../Server/mockdata/db.json",
       JSON.stringify(db)

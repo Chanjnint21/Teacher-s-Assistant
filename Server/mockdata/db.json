@@ -1,8 +1,5 @@
 {
-  "User": [
-    { "email": "heatkimnak@gmail.com", "password": "Kim2002kk" },
-    { "email": "heatkimnak@gmail.com", "password": "Kim2002kk" }
-  ],
+  "User": [{ "email": "heatkoemnak@gmail.com", "password": "Kim2002kk" }],
   "Class": [
     {
       "id": 1,

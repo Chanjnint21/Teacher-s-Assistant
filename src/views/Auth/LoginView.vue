@@ -86,20 +86,33 @@ export default {
     },
   },
   methods: {
-    async onLogin() {
-      const UserInp = {
-        email: this.Email,
-        password: this.Password,
-      };
-      await Service.SignIn(UserInp);
-      const auth = localStorage.getItem("token");
-      if (auth === "loginSuccess") {
-        this.$router.push("/dashboard");
+    async onLogin(e) {
+      e.preventDefault();
+      if (this.Email === "" || this.Password === "") {
+        this.$toast.error("Please fill all the fields");
+        return;
+      } else {
+        const UserInp = {
+          email: this.Email,
+          password: this.Password,
+        };
+        await Service.SignIn(UserInp)
+          .then(() => {
+            this.$router.push("/dashboard");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     },
     required(v) {
       return !!v || "The following Field is required";
     },
+  },
+  mounted() {
+    if (localStorage.getItem("token") === "loginSuccess") {
+      this.$router.push("/dashboard");
+    }
   },
 };
 </script>
