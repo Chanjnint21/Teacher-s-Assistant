@@ -249,17 +249,16 @@
                   ></v-btn>
                 </div>
                 <div class="card-actions-right">
-                  <v-btn
-                    size="small"
-                    color="surface-variant"
-                    variant="text"
-                    icon="mdi-dots-vertical"
-                    @click="DropDown()"
-                  ></v-btn>
-                  <!-- <v-menu transition="scale-transition">
+                  <v-menu transition="scale-transition">
                     <template v-slot:activator="{ props }">
-                      <v-btn v-bind="props">
-                        <v-icon end icon="mdi-dots-vertical"></v-icon>
+                      <v-btn
+                        v-bind="props"
+                        size="small"
+                        color="surface-variant"
+                        variant="text"
+                        icon="mdi-dots-vertical"
+                        @click="DropDown()"
+                      >
                       </v-btn>
                     </template>
                     <v-list>
@@ -269,7 +268,7 @@
                         }}</v-list-item-title>
                       </v-list-item>
                     </v-list>
-                  </v-menu> -->
+                  </v-menu>
                 </div>
               </div>
             </v-card>
@@ -392,8 +391,8 @@ export default {
     // ],
   }),
   methods: {
-    onLogout(){
-      this.$router.push('/login')
+    onLogout() {
+      this.$router.push("/login");
     },
     getItem(itemTitle) {
       if (itemTitle === "Edit") {
@@ -419,11 +418,9 @@ export default {
             Grade: response.data[0].Grade,
             time: moment().format("MMMM Do YYYY"),
           };
-          console.log(newOpen);
           if (newOpen) {
             Service.AddRecentClass(newOpen).then(
               () => {
-                console.log("good work");
                 this.$router.push("/class");
               },
               (err) => {

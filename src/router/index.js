@@ -7,7 +7,7 @@ const routes = [
   {
     path: "/",
     component: AuthLayout,
-    redirect: '/login',
+    redirect: "/login",
     children: [
       {
         path: "/login",
@@ -29,7 +29,7 @@ const routes = [
   {
     path: "/class",
     name: "class",
-    redirect: 'class/attendance',
+    redirect: "class/attendance",
     component: () => import("@/views/App/Class/SidebarMenu.vue"),
     children: [
       {
@@ -37,9 +37,9 @@ const routes = [
         name: "attendance",
         component: () =>
           import("@/views/App/Class/components/AttendanceStudents.vue"),
-          meta: {
-            auth: true
-          }
+        meta: {
+          auth: true,
+        },
       },
       {
         path: "score-grading",
@@ -66,7 +66,5 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
-
-
 
 export default router;

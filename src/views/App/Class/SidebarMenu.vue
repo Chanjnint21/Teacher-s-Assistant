@@ -66,7 +66,7 @@ export default {
     drawer: false,
     currentRoute: null,
     items: [
-      // { title: 'class', route: 'class', icon: 'mdi-view-dashboard' },
+      { title: "class", route: "class", icon: "mdi-view-dashboard" },
       { title: "Dashboard", route: "dashboard", icon: "mdi-view-dashboard" },
       { title: "Attendance", route: "attendance", icon: "mdi-account-check" },
       {
