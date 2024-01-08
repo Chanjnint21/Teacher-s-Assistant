@@ -1,11 +1,11 @@
 <template>
-  <v-container fluid class="px-10">
+  <v-container fluid class="px-10 mt-1">
     <v-row>
       <v-col cols="6">
         <h3>Attendance</h3>
       </v-col>
       <v-col cols="6" class="text-end">
-        <v-btn @click="openDialog" color="primary"> New Student</v-btn>
+        <dia-comp />
       </v-col>
     </v-row>
     <v-card flat>
@@ -32,7 +32,6 @@
         <template v-slot:item="{ item }">
           <tr>
             <td v-for="(header, index) in headers" :key="index" :style="{ whiteSpace: header.key === 'fullName' ? 'nowrap' : 'normal'}">
-              <!-- Check if the header corresponds to a day (day1, day2, ..., day31) -->
               <template v-if="header.key.startsWith('day')">
                 <v-select
                   v-model="item.attendances[header.key]"
@@ -85,6 +84,7 @@
 </template>
 
 <script>
+import { Service } from '@/Service/MockService';
 export default {
   data() {
     return {
@@ -109,11 +109,6 @@ export default {
         }))
       ],
       students: [
-      { id: 1, fullName: 'Student 1', gender: 'Male', class: 'M4', attendance: 100, attendances: { } },
-      { id: 2, fullName: 'Student 2', gender: 'Female', class: 'M4', attendance: 100, attendances: { } },
-      { id: 3, fullName: 'Student 3', gender: 'Male', class: 'M4', attendance: 100, attendances: { } },
-      { id: 4, fullName: 'Student 4', gender: 'Female', class: 'M4', attendance: 100, attendances: { } },
-      { id: 5, fullName: 'Student 5', gender: 'Male', class: 'M4', attendance: 100, attendances: { } },
       ],
     };
   },
@@ -151,8 +146,6 @@ export default {
       this.dialog = true;
     },
     addNewStudent() {
-
-      // Clear the form fields
       this.newStudent = {
         id: '',
         fullName: '',
@@ -175,8 +168,9 @@ export default {
       return day === this.currentDay;
     },
   },
-  mounted() {
+  async created() {
     this.todayDate()
+    this.students = await Service.getStudents();
   }
 };
 </script>

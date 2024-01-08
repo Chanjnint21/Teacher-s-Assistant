@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <v-container fluid>
     <v-row>
       <v-col cols="4">
         <br />
         <v-row>
           <v-col cols="10">
             <div>
-              <h2 class="ml-4">Student's List Name</h2>
+              <h3 class="mt-1">Student's List Name</h3>
             </div>
           </v-col>
           <v-col cols="2">
@@ -15,7 +15,7 @@
             </div>
           </v-col>
         </v-row>
-        <div class="ml-4 mt-4 v-scroll-y">
+        <div class=" mt-4 v-scroll-y">
           <v-row>
             <v-card height="800" class="mt-4 student-card">
               <StudentCard :students="students" @edit-student-info="handleEditStudentInfo" />
@@ -43,36 +43,36 @@
             <v-form ref="form">
               <v-row class="mr-2 ml-2">
                 <v-col cols="6" class="mt-8">
-                  <TextField label="Math" prependIcon="mdi-calculator-variant-outline" class="mb-8" v-model="math"
+                  <text-field label="Math" prependIcon="mdi-calculator-variant-outline" class="mb-8" v-model="math"
                     type="number" :rules="numberRules" />
-                  <TextField label="Physic" prependIcon="mdi-flash" class="mb-8" v-model="physic" type="number"
+                  <text-field label="Physic" prependIcon="mdi-flash" class="mb-8" v-model="physic" type="number"
                     :rules="numberRules" />
-                  <TextField label="Chemistry" prependIcon="mdi-atom" class="mb-8" v-model="chemistry" type="number"
+                  <text-field label="Chemistry" prependIcon="mdi-atom" class="mb-8" v-model="chemistry" type="number"
                     :rules="numberRules" />
-                  <TextField label="Biology" prependIcon="mdi-dna" class="mb-8" v-model="biology" type="number"
+                  <text-field label="Biology" prependIcon="mdi-dna" class="mb-8" v-model="biology" type="number"
                     :rules="numberRules" />
                 </v-col>
                 <v-col cols="6" class="mt-8">
-                  <TextField label="Khmer" prependIcon="mdi-note-outline" class="mb-8" v-model="khmer" type="number"
+                  <text-field label="Khmer" prependIcon="mdi-note-outline" class="mb-8" v-model="khmer" type="number"
                     :rules="numberRules" />
-                  <TextField label="English" prependIcon="mdi-alphabetical-variant" class="mb-8" v-model="english"
+                  <text-field label="English" prependIcon="mdi-alphabetical-variant" class="mb-8" v-model="english"
                     type="number" :rules="numberRules" />
-                  <TextField label="Sport" prependIcon="mdi-soccer" class="mb-8" v-model="sport" type="number"
+                  <text-field label="Sport" prependIcon="mdi-soccer" class="mb-8" v-model="sport" type="number"
                     :rules="numberRules" />
-                  <TextField label="Computer" prependIcon="mdi-desktop-classic" class="mb-8" v-model="computer"
+                  <text-field label="Computer" prependIcon="mdi-desktop-classic" class="mb-8" v-model="computer"
                     type="number" :rules="numberRules" />
                 </v-col>
               </v-row>
 
               <v-row justify="center">
                 <v-col cols="2" class="mb-4">
-                  <BtnComp label="Cancel" prependIcon="mdi-cancel" color="#BF3131" @click="clearInput" />
+                  <btn-comp label="Cancel" prependIcon="mdi-cancel" color="#BF3131" @click="clearInput" />
                 </v-col>
                 <v-col cols="2">
-                  <BtnComp label="Save Draft" prependIcon="mdi-pen" color="#EAD196" :disabled="disabled"/>
+                  <btn-comp label="Save Draft" prependIcon="mdi-pen" color="#EAD196" :disabled="disabled"/>
                 </v-col>
                 <v-col cols="2">
-                  <BtnComp label="Submit" prependIcon="mdi-check" color="#219C90" @click="saveInput" />
+                  <btn-comp label="Submit" prependIcon="mdi-check" color="#219C90" @click="saveInput" />
                 </v-col>
               </v-row>
             </v-form>
@@ -80,23 +80,17 @@
         </div>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
 import StudentCard from '@/components/StudentCard';
-import TextField from '@/components/TextField.vue';
-import BtnComp from '@/components/BtnComp.vue';
-import DiaComp from '@/components/DiaComp';
 import { Service } from '@/Service/MockService';
 
 
 export default {
   components: {
-    StudentCard,
-    TextField,
-    BtnComp,
-    DiaComp,
+    StudentCard
   },
   data: () => ({
     disabled: true,

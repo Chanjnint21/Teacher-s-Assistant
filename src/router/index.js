@@ -29,6 +29,7 @@ const routes = [
   {
     path: "/class",
     name: "class",
+    redirect: 'class/attendance',
     component: () => import("@/views/App/Class/SidebarMenu.vue"),
     children: [
       {
