@@ -1,11 +1,9 @@
 <template>
-  <v-responsive class="mx-auto" max-width="510">
     <v-text-field variant="outlined" hide-details="auto" :label="label" v-model="internalValue">
       <template v-slot:prepend-inner>
         <v-icon v-if="prependIcon">{{ prependIcon }}</v-icon>
       </template>
     </v-text-field>
-  </v-responsive>
 </template>
 
 <script>

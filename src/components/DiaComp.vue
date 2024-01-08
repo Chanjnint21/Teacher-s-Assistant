@@ -1,5 +1,4 @@
 <template>
-  <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="600">
       <template v-slot:activator="{ props }">
         <v-btn
@@ -8,6 +7,7 @@
           @click="a"
           color="#952175"
           v-bind="props"
+          size="x-small"
         >
           <v-icon>mdi-plus</v-icon>
         </v-btn>
@@ -24,7 +24,7 @@
                 <TextField label="Full Name"  class="input-field" v-model="fullName" required />
               </v-col>
               <v-col cols="12">
-                <TextField label="Age"  class="input-field" v-model="age" required />
+                <TextField label="Date of Birth"  class="input-field" v-model="DOB" required />
               </v-col>
               <v-col cols="12">
                 <TextField label="Gender"  class="input-field" v-model="gender" required />
@@ -33,7 +33,7 @@
                 <TextField label="Email"  class="input-field" v-model="email" required />
               </v-col>
               <v-col cols="12">
-                <v-select :items="['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']" label="Class" required v-model="studentClass"> </v-select>
+                <v-select :items="['M1', 'M2', 'M3', 'M4', 'M5', 'M6']" label="Class" required v-model="Class"> </v-select>
               </v-col>
             </v-row>
           </v-form>
@@ -43,11 +43,9 @@
           <v-spacer></v-spacer>
           <v-btn color="primary darken-2" text @click="dialog = false">Close</v-btn>
           <v-btn color="primary darken-2" text @click="saveStudent ">Save</v-btn>
-
         </v-card-actions>
       </v-card>
     </v-dialog>
-  </v-row>
 </template>
 
 <script>
@@ -59,9 +57,9 @@ export default {
   data: () => ({
     dialog: false,
     fullName: '',
-    age: '',
+    DOB: '',
     email: '',
-    studentClass: ' ',
+    Class: ' ',
     gender: ''
   }),
   components: {
@@ -73,15 +71,16 @@ export default {
       if (valid) {
         const addStudentData = {
           fullName: this.fullName,
-          age: this.age,
+          DOB: this.DOB,
           email: this.email,
           gender: this.gender,
-          studentClass: this.studentClass
+          class: this.Class,
+          attendance: 100,
+          attendances: { }
         }
         try {
-          console.log('hiii')
           await Service.addStudent(addStudentData);
-          console.log('Student added successfully');
+          this.$router.go()
         } catch (error) {
           console.error('Error adding student:', error);
         }

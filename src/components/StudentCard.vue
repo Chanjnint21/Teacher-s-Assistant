@@ -9,7 +9,7 @@
                 <v-card-title class="text-h5">
                   {{ student.fullName }}
                 </v-card-title>
-                <v-card-subtitle> <span>class:</span> {{ student.studentClass }}</v-card-subtitle>
+                <v-card-subtitle> <span>class:</span> {{ student.class }}</v-card-subtitle>
                 <v-card-actions>
                   <v-btn class="ms-2" icon @click="editStudentInfo(student)">
                     <v-icon>mdi-pencil</v-icon>
