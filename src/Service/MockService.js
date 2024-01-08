@@ -63,7 +63,29 @@ export const Service = {
       console.error('Error in adding student score', error);
       throw error;
     }
-  }
+  },
+
+  async getStudentScores(studentId) {
+    try {
+      const response = await axios.get(`http://localhost:8080/getStudentScores/${studentId}`);
+      console.log(response.data);
+      return response.data
+    } catch (error) {
+      console.error('Error fetching student scores:', error);
+      throw error;
+    }
+  },
+
+  async editStudent(studentId, updatedData) {
+    try {
+      const response = await axios.put(`http://localhost:8080/editStudents/${studentId}`, updatedData);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error editing student:', error);
+      throw error;
+    }
+  },
 
 
 }

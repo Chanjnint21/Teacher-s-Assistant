@@ -69,7 +69,7 @@
                   <BtnComp label="Cancel" prependIcon="mdi-cancel" color="#BF3131" @click="clearInput" />
                 </v-col>
                 <v-col cols="2">
-                  <BtnComp label="Save Draft" prependIcon="mdi-pen" color="#EAD196" />
+                  <BtnComp label="Save Draft" prependIcon="mdi-pen" color="#EAD196" :disabled="disabled"/>
                 </v-col>
                 <v-col cols="2">
                   <BtnComp label="Submit" prependIcon="mdi-check" color="#219C90" @click="saveInput" />
@@ -99,6 +99,7 @@ export default {
     DiaComp,
   },
   data: () => ({
+    disabled: true,
     studentId: null,
     studentName: '',
     valid: false,
