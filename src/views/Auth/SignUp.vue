@@ -114,7 +114,8 @@ export default {
     },
   },
   methods: {
-    async SubmitSignUp() {
+    async SubmitSignUp(e) {
+      e.preventDefault();
       if (this.Password !== this.ConfirmPassword) {
         this.PasswordError = "Password not matched.";
       }
@@ -122,11 +123,14 @@ export default {
         email: this.Email,
         password: this.Password,
       };
-      await Service.SignUp(UserInp);
-      const auth = localStorage.getItem("token");
-      if (auth === "loginSuccess") {
-        this.$router.push("/login");
-      }
+
+      await Service.SignUp(UserInp)
+        .then(() => {
+          this.$router.push("/login");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     required(v) {
       return !!v || "The following Field is required";

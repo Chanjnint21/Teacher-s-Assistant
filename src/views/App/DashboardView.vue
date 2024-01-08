@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
-    <v-app-bar extended>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    <v-app-bar extended color="#2C3E50">
+      <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon> -->
       <v-toolbar-className>Your Dashboard</v-toolbar-className>
 
       <v-spacer></v-spacer>
@@ -179,9 +179,9 @@
                     <v-card-className class="text-white ml-2">
                       {{ card.className.toUpperCase() }}
                     </v-card-className>
-                    <v-card-className class="text-white ml-2 fs-4">
+                    <div class="text-white ml-2 text-caption">
                       {{ card.time }}
-                    </v-card-className>
+                    </div>
 
                     <v-spacer></v-spacer>
 
@@ -403,7 +403,6 @@ export default {
       console.log((this.isDropDown = !this.isDropDown));
     },
     async GetAClass(classId) {
-      // this.$router.push({ name: "UpdateClass", params: { id: classId } });
       await axios
         .get("http://localhost:8080/class/" + classId)
         .then((response) => {

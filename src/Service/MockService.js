@@ -6,7 +6,8 @@ export const Service = {
       await axios
         .post("http://localhost:8080/user", newUser)
         .then((response) => {
-          localStorage.setItem("token", JSON.stringify(response.data.token));
+          // localStorage.setItem("token", JSON.stringify(response.data.token));
+          console.log(response.data);
         });
       return;
     } catch (e) {
@@ -101,25 +102,28 @@ export const Service = {
 
   async getStudentScores(studentId) {
     try {
-      const response = await axios.get(`http://localhost:8080/getStudentScores/${studentId}`);
+      const response = await axios.get(
+        `http://localhost:8080/getStudentScores/${studentId}`
+      );
       console.log(response.data);
-      return response.data
+      return response.data;
     } catch (error) {
-      console.error('Error fetching student scores:', error);
+      console.error("Error fetching student scores:", error);
       throw error;
     }
   },
 
   async editStudent(studentId, updatedData) {
     try {
-      const response = await axios.put(`http://localhost:8080/editStudents/${studentId}`, updatedData);
+      const response = await axios.put(
+        `http://localhost:8080/editStudents/${studentId}`,
+        updatedData
+      );
       console.log(response.data);
       return response.data;
     } catch (error) {
-      console.error('Error editing student:', error);
+      console.error("Error editing student:", error);
       throw error;
     }
   },
-
-}
-
+};
